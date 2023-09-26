@@ -1,0 +1,106 @@
+stages:
+  - build
+  - initial_test_execution
+  - rerun_failed_test_cases
+variables:
+  # Set the cache key to include the Git branch and commit SHA
+  CACHE_KEY: "$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHA"
+
+
+build-testing-docker-container:
+  # Use the official docker image.
+  image: docker:latest
+  stage: build
+  tags:
+    - docker-executor
+  services:
+    - docker:dind
+    
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY  
+  
+  script:
+    - echo $CI_REGISTRY
+    - cd 5G-Simone-Tests
+    - docker build --pull -t "$CI_REGISTRY/biqx_dev/5g-simone-frontend/5g-simone-frontend-tester:latest" .
+    #- echo "Docker image is:'$CI_REGISTRY/biqx_dev/5g-simone-frontend/5g-simone-frontend-tester:latest'" 
+    - docker push "$CI_REGISTRY/biqx_dev/5g-simone-frontend/5g-simone-frontend-tester:latest"
+
+    #- docker images
+    #- docker ps
+
+
+initial-test:
+  # Use the image from biqx CI Registry.
+  image: $CI_REGISTRY/biqx_dev/5g-simone-frontend/5g-simone-frontend-tester:latest
+  when: always
+  stage: initial_test_execution
+  tags:
+    - docker-executor
+  services:
+    - docker:dind
+    
+  script:
+    - cd 5G-Simone-Tests
+    #- pabot --outputdir Test-Results TestCases/*.robot
+    - robot -d Test_Results  TestCases
+
+    #- chmod -R 700 Test-Results
+    #- ls -al Test-Results        
+     #|| exit_code=$?
+    # convert the output/xml to junit/xunit files und the robot post-processor rebot
+    #- rebot --xunit junit.xml Test-Results/output.xml
+    
+    #- exit $exit_code
+   
+  cache:
+    key: ${CACHE_KEY}
+    paths:
+      - /builds/biqx_dev/5g-simone-frontend/5G-Simone-Tests
+
+  # Run this job in a branch where a Dockerfile exists
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      exists:
+        - 5G-Simone-Tests/Dockerfile
+  artifacts:
+    name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}
+    when: always
+    paths:
+      #- 5G-Simone-Tests/junit.xml
+      - 5G-Simone-Tests/Test_Results/
+    #reports:
+      #junit: 5G-Simone-Tests/junit.xml
+
+
+rerun-failed-test:
+  # Use the image from biqx CI Registry.
+  image: $CI_REGISTRY/biqx_dev/5g-simone-frontend/5g-simone-frontend-tester:latest
+  when: on_failure
+  stage: rerun_failed_test_cases
+  tags:
+    - docker-executor
+  services:
+    - docker:dind
+    
+  script:
+    - cd 5G-Simone-Tests
+    - ls -al TC_Results
+    -  robot --rerunfailed Test_Results/output.xml --outputdir Failed_Test_Results TestCases       
+   
+  cache:
+    key: ${CACHE_KEY}
+    paths:
+      - /builds/biqx_dev/5g-simone-frontend/5G-Simone-Tests
+
+  # Run this job in a branch where a Dockerfile exists
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      exists:
+        - 5G-Simone-Tests/Dockerfile
+      #when: on_failure  
+  artifacts:
+    name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}
+    when: always
+    paths:
+      - 5G-Simone-Tests/Failed_Test_Results/
