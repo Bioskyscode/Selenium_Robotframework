@@ -85,7 +85,7 @@ rerun-failed-test:
     
   script:
     - cd 5G-Simone-Tests
-    - ls -al TC_Results
+    - ls -al Test_Results
     -  robot --rerunfailed Test_Results/output.xml --outputdir Failed_Test_Results TestCases       
    
   cache:
