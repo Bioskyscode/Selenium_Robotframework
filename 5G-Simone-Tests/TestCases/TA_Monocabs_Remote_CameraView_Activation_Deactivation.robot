@@ -17,5 +17,5 @@ Validate Ability To Activate/Deactivate Camera Views
     TA_MoncabsRemoteKeywords.Validate If Camera View is Opened
     TA_MoncabsRemoteKeywords.Toggle CameraView-fahrtrichtungRecht ACtivation-Deactivation Button
     TA_MoncabsRemoteKeywords.Toggle CameraView-kabine ACtivation-Deactivation Button
-    #Repeat Keyword    4    TA_MoncabsRemoteKeywords.Toggle CameraView-3 ACtivation-Deactivation Button
+    ##Repeat Keyword    4    TA_MoncabsRemoteKeywords.Toggle CameraView-3 ACtivation-Deactivation Button
     #Repeat Keyword    4    TA_MoncabsRemoteKeywords.Toggle CameraView-4 ACtivation-Deactivation Button
