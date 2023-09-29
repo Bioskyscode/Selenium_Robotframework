@@ -63,12 +63,12 @@ Navigate To Abfahrt
 Navigate To Gesundheit
     Click Element                               ${li_Gesundheit}
     Gesundheit Table Header Validation
-    Page Should Not Contain                     Keine Daten geladen (Thema Gesundheit)
+    #Page Should Not Contain                     Keine Daten geladen (Thema Gesundheit)     #Data not provided yet from Telekom
 
 Navigate To Shopping
     Click Element                               ${li_Shopping}
     Shopping Table Header Validation
-    Page Should Not Contain                     Keine Daten geladen (Thema Shopping)
+    #Page Should Not Contain                     Keine Daten geladen (Thema Shopping)       #Data not provided yet from Telekom
 
 Navigate To Unterkunft
     Click Element                               ${li_Unterkunft}
@@ -78,17 +78,17 @@ Navigate To Unterkunft
 Navigate To Gastronomie
     Click Element                               ${li_Gastronomie}
     Gastronomie Table Header Validation
-    Page Should Not Contain                     Keine Daten geladen (Gastronomie)
+    #Page Should Not Contain                     Keine Daten geladen (Gastronomie)          #Data not provided yet from Telekom
 
 Navigate To Sehenswürdigkeit
     Click Element                               ${li_Sehenswürdigkeiten}
     Sehenswürdigkeiten Table Header Validation
-    Page Should Not Contain                     Keine Daten geladen (Sehenswürdigkeiten)
+    #Page Should Not Contain                     Keine Daten geladen (Sehenswürdigkeiten)   #Data not provided yet from Telekom
 
 Navigate To Kultur
     Click Element                               ${li_Kultur}
     Kultur Table Header Validation
-    Page Should Not Contain                     Keine Daten geladen (Entertainment)
+    #Page Should Not Contain                     Keine Daten geladen (Entertainment)        #Data not provided yet from Telekom
     
 Abfahrt Table Header Validation
     Wait Until Page Contains Element            ${Abfahrt_table}

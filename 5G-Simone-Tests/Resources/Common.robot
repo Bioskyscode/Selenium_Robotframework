@@ -4,7 +4,7 @@ Resource            ../Resources/baseVariables.robot
 
 *** Keywords ***
 Start Web Test
-    Selenium Speed
+    #Selenium Speed
     ${options}                          Evaluate                sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
     Call Method                         ${options}              add_argument            test-type
     Call Method                         ${options}              add_argument            --headless

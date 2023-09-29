@@ -26,6 +26,19 @@ Check Vehicle Position On The Map
     Wait Until Page Contains Element                ${vehicleDetailPopup}
     Wait Until Page Contains Element                ${btn_closeVehicleDetails}
     Click Element                                   ${btn_closeVehicleDetails}
+
+Check Stations Positions On The Map
+    #Repeat Keyword    5    ZoomOut
+    Wait Until Page Contains Element                ${Bielefeld_station}
+    Wait Until Page Contains Element                ${Lemgo_station}
+    Wait Until Page Contains Element                ${Minden_station}
+    Wait Until Page Contains Element                ${Bückeburg_station}
+    Wait Until Page Contains Element                ${Brückenweg_station}
+    Wait Until Page Contains Element                ${BÜ_Bruchstr_station}
+    Wait Until Page Contains Element                ${Bösingfeld_station}
+    Wait Until Page Contains Element                ${Wunstorf_station}
+    #Page Should Contain Element                     ${Seelze_station}
+    Wait Until Page Contains Element                ${Hannover_station}
     
 Check For Its Monocab Details
     Click Element                                   ${img_vehicle}

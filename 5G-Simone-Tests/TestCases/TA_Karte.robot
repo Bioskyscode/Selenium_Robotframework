@@ -16,6 +16,7 @@ Validate Vehicle Position on Map
     TA_KarteKeywords.Check If Google Map and the Zoom Button Are Displayed
     TA_KarteKeywords.Check Vehicle Position On The Map
     TA_KarteKeywords.Check For Its Monocab Details
+    TA_KarteKeywords.Check Stations Positions On The Map
 
 
 
