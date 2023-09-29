@@ -7,15 +7,15 @@ Resource                ../Resources/baseVariables.robot
 *** Keywords ***
 Search For The Following Users
     Search For Clients                  ${client1}
-    Page Should Contain                 Aleena
+    Page Should Contain                 ${client1}
     Search For Clients                  ${client2}
-    Page Should Contain                 Biqx
+    Page Should Contain                 ${client2}
     Search For Clients                  ${client3}
-    Page Should Contain                 demo
+    Page Should Contain                 ${client3}
     Search For Clients                  ${client4}
-    Page Should Contain                 ${EMPTY}
+    Page Should Contain                 ${client4}
     Search For Clients                  ${client5}
-    Page Should Contain                 uni
+    Page Should Contain                 ${client5}
     Log To Console                      Client successfully searched for!
 
 Click On "Mandant deaktivieren"
@@ -103,13 +103,13 @@ Enter "Mandanten Name"
     [Arguments]                         ${name}
     Wait Until Page Contains Element    ${txt_clientName}
     Mouse Over                          ${txt_clientName}
-    Input Text                          ${txt_clientName}     ${name}
+    Input Text                          ${txt_clientName}           ${name}
 
 Enter "Mandanten Kurzname"
     [Arguments]                         ${short_name}
     Wait Until Page Contains Element    ${txt_clientShortName}
     Mouse Over                          ${txt_clientShortName}
-    Input Text                          ${txt_clientShortName}     ${short_name}
+    Input Text                          ${txt_clientShortName}      ${short_name}
 
 Enter "Beschreibung"
     [Arguments]                         ${description}
@@ -122,19 +122,19 @@ Enter "Admin Name"
     [Arguments]                         ${admin_name}
     Wait Until Page Contains Element    ${txt_adminName}
     Mouse Over                          ${txt_adminName}
-    Input Text                          ${txt_adminName}     ${admin_name}
+    Input Text                          ${txt_adminName}            ${admin_name}
 
 Enter "Admin Nachname"
     [Arguments]                         ${admin_surname}
     Wait Until Page Contains Element    ${txt_adminSurname}
     Mouse Over                          ${txt_adminSurname}
-    Input Text                          ${txt_adminSurname}     ${admin_surname}
+    Input Text                          ${txt_adminSurname}         ${admin_surname}
 
 Enter "Admin Email-Adresse"
     [Arguments]                         ${admin_email}
     Wait Until Page Contains Element    ${txt_adminEmail}
     Mouse Over                          ${txt_adminEmail}
-    Input Text                          ${txt_adminEmail}     ${admin_email}
+    Input Text                          ${txt_adminEmail}           ${admin_email}
 
 Click On "Weiter"
     Wait Until Page Contains Element    ${btn_continue}
@@ -145,11 +145,15 @@ Click On "Anlegen"
     Wait Until Page Contains Element    ${btn_invite}
     Mouse Over                          ${btn_invite}
     Click Element                       ${btn_invite}
+    Wait Until Page Contains            erledigt!
+    Element Should Contain              ${btn_invite}               erledigt!
 
 Mandant Toast_alert Validation
     Wait Until Element Is Visible       ${mandant_toast_alert}
-    ${toast_text}                       Get Text    ${txt_mandant_toast_alert}
-    Should Be Equal                     ${toast_text}        Das hat geklappt.
+    ${top_toast_text}                   Get Text                    ${txt_mandant_toast_alert_top}
+    ${buttom_toast_text}                Get Text                    ${txt_mandant_toast_alert_buttom}
+    Should Be Equal                     ${top_toast_text}           Das hat geklappt.
+    Should Be Equal                     ${buttom_toast_text}        Mandant erfolgreich angelegt
     Log To Console                      Client successfully invited!
 
 

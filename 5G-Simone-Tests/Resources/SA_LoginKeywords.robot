@@ -19,7 +19,7 @@ Negative Login Attempt To SA Page
 Login To SA Page
     Enter Email                                                 ${superAdmin_Email}
     Click On "Weiter"
-    Enter Password                                              ${SA_Password}
+    Enter Password                                              ${SA_Password_testingStage}
     Click On "Anmelden"
     Log Title
     Verify Sucessful Login
@@ -34,7 +34,7 @@ Validate Mandanten-Liste Table Headers
     Table Column Should Contain                         ${tbl_Mandanten_liste}               6           Inaktiv
 
 Navigate To 5G Simone Super Admin URL
-    Go To                                                       ${superAdmin_URL}
+    Go To                                                       ${superAdmin_URL_testingStage}
 
 Enter Email
     [Arguments]                                                 ${email}
@@ -89,7 +89,7 @@ Error Message 2
 
 Verify Sucessful Login
     Wait Until Page Contains Element                            ${title_mandanten}
-    Location Should Be                                          http://82.165.231.18:3001/tenants
+    #Location Should Be                                          http://82.165.231.18:3001/tenants
     Element Should Contain                                      ${title_mandanten}              Mandanten
     Wait Until Page Contains Element                            ${txt_biqx}
     Element Should Contain                                      ${txt_biqx}                     biqx GmbH

@@ -3,13 +3,15 @@ ${chrome}                                   chrome
 ${edge}                                     edge
 ${firefox}                                  firefox
 
-${TA_Password}                              HalliGalli2!
+${TA_Password}                 HalliGalli2!
 #${tenantAdmin_AzureURL}                          http://20.52.117.91:3000/welcome
 ${tenantAdmin_URL_productionStage}          http://82.165.231.18:3000/welcome
-${tenantAdmin_URL}                          http://82.165.231.18:3001/welcome
+${tenantAdmin_URL_testingStage}             http://82.165.231.18:3001/welcome
 ${tenantAdmin_Email_testing}                proj.testing@biqx.de
 ${tenantAdmin_Email_simone}                 proj.simone@biqx.de
 ${tenantAdmin_Email_stadtbus}               proj.stadtbus@biqx.de
+${tenantAdmin_Email_regehr}                 d@regehr.de
+${TA_Password_regehr}                       Yy!45678
 
 
 #${tenantAdmin_Email_tommy}                  tommy.steiner@biqx.de
@@ -29,13 +31,13 @@ ${mandant_password_abiodun}                 Project5GSimone#
 
 #${superAdmin_AzureURL}                           http://20.52.117.91:3000/login/superadmin
 ${superAdmin_URL_ProductionStage}           http://82.165.231.18:3000/login/superadmin
-${superAdmin_URL}                           http://82.165.231.18:3001/login/superadmin
+${superAdmin_URL_testingStage}              http://82.165.231.18:3001/login/superadmin
 ${superAdmin_Email}                         detlef.regehr@biqx.de
 ${SA_Password_ProductionStage}              Yy!45678
-${SA_Password}                              HalliGalli2!
+${SA_Password_testingStage}                 HalliGalli2!
 
 ${Vehicle}                                  Simonex
-${Simone_OpId}                              de:THOWL
+${Vehicle_OpId}                             Biqx
 ${Linie_Id}                                 L841
 ${Current_Passangers}                       21
 ${Emmergency_Message}                       Technical Problem
@@ -44,7 +46,7 @@ ${lat}                                      52.00000
 ${lon}                                      10.0000
 
 ############ API
-&{TaLogin_request_body}                      email=${tenantAdmin_Email_simone}    password=${TA_Password}
+&{TaLogin_request_body}                      email=${tenantAdmin_Email_testing}    password=${TA_Password}
 ${VehicleMoveUpdate_resBody}                 {"cameras": [{"url": "/VID_rechts.mp4","focus": "Fahrtrichtung Rechts"},{"url": "/VID_cabin.mp4","focus": "Kabine"}],
 ...     "remoteControl": {"startupParams": "RemoteControl"},
 ...     "gpsFix": "string",
@@ -52,7 +54,7 @@ ${VehicleMoveUpdate_resBody}                 {"cameras": [{"url": "/VID_rechts.m
 ...     "metrics": {"cpuUse": 0,"cpuTemp": 0,"ramUse": 0,"throtl": "string","diskFree": 0},
 ...     "timeUtc": "2023-08-23T11:05:21.934Z",
 ...     "timeLoc": "2023-08-23T11:05:21.934Z",
-...     "use": {"vId": "${Vehicle}","opId": "${Simone_OpId}","lId": "${Linie_Id}"},
+...     "use": {"vId": "${Vehicle}","opId": "${Vehicle_OpId}","lId": "${Linie_Id}"},
 ...     "coords": {"lat": ${lat},"lon": ${lon},"alt": 0,
 ...     "err": {"lat": 0,"lon": 0,"alt": 0},
 ...     "accL": 0,"prv": "string","satellites": 0},
@@ -63,13 +65,13 @@ ${VehicleMoveUpdate_resBody}                 {"cameras": [{"url": "/VID_rechts.m
 
 ############ Search For SA Clients #############
 ${client1}                                  Aleena
-${client2}                                  Biqx
-${client3}                                  demo
-${client4}                                  ${EMPTY}
-${client5}                                  uni
+${client2}                                  pnich
+${client3}                                  Demo-Mandant
+${client4}                                  White
+${client5}                                  Hayroyal
 
 ########### Search For Tenants ######################
-${tenant1}                                  Matthew
+${tenant1}                                  Götz
 ${tenant2}                                  Jennifer
 ${tenant3}                                  Brian
 

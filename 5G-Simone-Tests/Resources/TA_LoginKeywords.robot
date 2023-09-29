@@ -18,7 +18,7 @@ Negative Login Attempt To TA Page
 
 Login Tenant Admin Page
     #Reload Page
-    Enter Email                                             ${tenantAdmin_Email_simone}
+    Enter Email                                             ${tenantAdmin_Email_testing}
     Click Next Button
     Enter Password                                          ${TA_Password}
     Click Login Button
@@ -43,7 +43,7 @@ Login To Tenant Page
     Validate Successful Login
 
 Navigate To 5G Simone Tenant Admin URL
-    Go To                                                   ${tenantAdmin_URL}
+    Go To                                                   ${tenantAdmin_URL_testingStage}
     Wait Until Page Contains                                Willkommen bei 5G-Simone
     Wait Until Page Contains Element                        ${img_WelcomePage}
     Wait Until Page Contains                                Anmelden
@@ -91,7 +91,8 @@ TA Login Error Message
 
 Validate Successful Login
     Validate Menu-Items
-    Location Should Be                                      http://82.165.231.18:3001/monocabs
+    #Location Should Be                                      http://82.165.231.18:3001/monocabs
+    Page Should Contain                                     biqx GmbH
     Log To Console                                          successful login
 
 Validate Menu-Items

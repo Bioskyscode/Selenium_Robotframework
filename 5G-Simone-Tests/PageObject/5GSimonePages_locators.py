@@ -34,8 +34,13 @@ btn_continue = '//*[@id="continue-tenant-invitation"]'
 btn_close = '//button[@aria-label="Close"]'
 btn_innerClose = '(//button[@aria-label="Close"])[2]'
 btn_invite = '//*[@id="save-tenant-button-action"]'
-mandant_toast_alert = 'xpath://*[@id="root"]/div/div/div[3]/div/div/div[1]'
-txt_mandant_toast_alert = 'xpath://*[@id="root"]/div/div/div[3]/div/div/div[1]/div/div/div/div/span'
+mandant_toast_alert = '//*[@id="root"]/div/div/div[4]/div/div/div[1]/div/div/div/div[1]'
+txt_mandant_toast_alert_top = '//*[@id="root"]/div/div/div[4]/div/div/div[1]/div/div/div/div/span'
+#//*[@id="root"]/div/div/div[4]/div/div/div[1]
+#//*[@id="root"]/div/div/div[4]/div/div/div[1]/div/div/div/div[1]
+#//*[@id="root"]/div/div/div[4]/div/div/div[1]/div/div/div/div[1]/span
+#//*[@id="root"]/div/div/div[4]/div/div/div[1]/div/div/div/div[1]/div
+txt_mandant_toast_alert_buttom = '//*[@id="root"]/div/div/div[4]/div/div/div[1]/div/div/div/div[1]/div'
 
 # Tenant-Admin Login Page
 txt_tenantEmail = 'xpath://*[@id="emailInput"]'
@@ -135,7 +140,8 @@ googleMap = '//div[@class="mapContainer leaflet-container leaflet-touch leaflet-
 btn_Qos = '//a[@id="qos-link"]'
 
             # API
-api_base_url = 'http://82.165.231.18:3002'
+api_base_url_testingStage = 'http://82.165.231.18:3002'
+api_base_url_productionStage = 'http://82.165.231.18'
 login_url = '/Account/Login'
 Vehicle_moveUpdate_url = '/VehicleMessage/MoveUpdate'
 
