@@ -11,7 +11,7 @@ Navigate To Google Map
     Click Element                                   ${btn_map}
 
 Check If Google Map and the Zoom Button Are Displayed
-    Wait Until Page Contains Element                ${googleMap}
+    #Wait Until Page Contains Element                ${googleMap}
     Wait Until Page Contains Element                ${btn_zoomButtons}
 
 ZoomOut

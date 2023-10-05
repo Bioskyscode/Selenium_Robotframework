@@ -66,7 +66,7 @@ ${VehicleMoveUpdate_resBody}                 {"cameras": [{"url": "/VID_rechts.m
 ############ Search For SA Clients #############
 ${client1}                                  Aleena
 ${client2}                                  pnich
-${client3}                                  Demo-Mandant
+${client3}                                  Martin
 ${client4}                                  White
 ${client5}                                  Hayroyal
 

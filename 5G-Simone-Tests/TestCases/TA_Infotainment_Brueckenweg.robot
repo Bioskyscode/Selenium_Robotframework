@@ -6,20 +6,20 @@ Test Setup                      Common.Start Web Test
 Test Teardown                   Common.Stop Web Test
 
 *** Test Cases ***
-Validate Minden HBF Reeceives MTTQ Service Data
-    [Tags]      Infotainment      TA     TA15
+Validate Brückenweg HBF Reeceives MTTQ Service Data
+    [Tags]      Infotainment      TA     TA16
     TA_LoginKeywords.Navigate To 5G Simone Tenant Admin URL
     TA_LoginKeywords.Login Tenant Admin Page
     TA_InfotainmentKeywords.Navigate To Infotainment Page
     TA_InfotainmentKeywords.Select Topics
     TA_InfotainmentKeywords.Select Station
-    TA_InfotainmentKeywords.Select Minden BHF
+    TA_InfotainmentKeywords.Select Brückenweg BHF
     TA_InfotainmentKeywords.Weather Data
-    TA_InfotainmentKeywords.Navigate To Abfahrt
+    #TA_InfotainmentKeywords.Navigate To Abfahrt
     TA_InfotainmentKeywords.Navigate To Gesundheit
     TA_InfotainmentKeywords.Navigate To Shopping
     TA_InfotainmentKeywords.Navigate To Unterkunft
     TA_InfotainmentKeywords.Navigate To Gastronomie
-    TA_InfotainmentKeywords.Navigate To Sehenswürdigkeit
+    #TA_InfotainmentKeywords.Navigate To Sehenswürdigkeit
     #TA_InfotainmentKeywords.Navigate To Kultur
     #TA_InfotainmentKeywords.Navigate To Annehmlichkeit

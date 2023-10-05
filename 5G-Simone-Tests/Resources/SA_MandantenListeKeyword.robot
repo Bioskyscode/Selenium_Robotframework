@@ -23,7 +23,7 @@ Click On "Mandant deaktivieren"
     Click Element                       ${btn_client_re_deactivate}
 
 Select Random Table Row
-    ${random_num}                        Evaluate    random.sample(range(1, 3, 4), 1)    random           #FakerLibrary.Random Int             8       10                #Evaluate    random.sample(range(3, 10), 1)    random
+    ${random_num}                       Evaluate    random.sample(range(2, 4), 1)    #random           #FakerLibrary.Random Int             8       10                #Evaluate    random.sample(range(3, 10), 1)    random
     ${table row}                        Set Variable     //*[@id="tenant-table"]/div[2]/table/tbody/tr${random_num}
     #//*[@id="tenant-table"]/div[2]/table/tbody/tr[2]
     Log To Console                      Table row : ${random_num}

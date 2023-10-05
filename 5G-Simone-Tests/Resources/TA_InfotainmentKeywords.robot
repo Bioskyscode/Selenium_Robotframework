@@ -21,6 +21,65 @@ Validate Infotainment Page is Loaded Successfully
     Page Should Contain                         Gastronomie
     Page Should Contain                         Sehenswürdigkeiten
     Page Should Contain                         Kultur
+    Page Should Contain                         Annehmlichkeit
+    Page Should Contain                         Leihräder/-roller
+
+Select Topics
+    Select Wetter
+    Select Abfahrt
+    Select Gesundheit
+    Select Shopping
+    Select Unterkunft
+    Select Gastronomie
+    Select Sehenswürdigkeiten
+    Select Kultur
+    Select Annehmlichkeit
+
+Select Wetter
+    Wait Until Page Contains Element            ${topic_wetter}
+    Mouse Over                                  ${topic_wetter}
+    Click Element                               ${topic_wetter}
+
+Select Abfahrt
+    Wait Until Page Contains Element            ${topic_abfahrt}
+    Mouse Over                                  ${topic_abfahrt}
+    Click Element                               ${topic_abfahrt}
+
+Select Gesundheit
+    Wait Until Page Contains Element            ${topic_gesundheit}
+    Mouse Over                                  ${topic_gesundheit}
+    Click Element                               ${topic_gesundheit}
+
+Select Shopping
+    Wait Until Page Contains Element            ${topic_shopping}
+    Mouse Over                                  ${topic_shopping}
+    Click Element                               ${topic_shopping}
+
+Select Unterkunft
+    Wait Until Page Contains Element            ${topic_unterkunft}
+    Mouse Over                                  ${topic_unterkunft}
+    Click Element                               ${topic_unterkunft}
+
+Select Gastronomie
+    Wait Until Page Contains Element            ${topic_gastronomie}
+    Mouse Over                                  ${topic_gastronomie}
+    Click Element                               ${topic_gastronomie}
+
+Select Sehenswürdigkeiten
+    Wait Until Page Contains Element            ${topic_sehenswürdigkeiten}
+    Mouse Over                                  ${topic_sehenswürdigkeiten}
+    Click Element                               ${topic_sehenswürdigkeiten}
+
+Select Kultur
+    Wait Until Page Contains Element            ${topic_kultur}
+    Mouse Over                                  ${topic_kultur}
+    Click Element                               ${topic_kultur}
+
+Select Annehmlichkeit
+    Wait Until Page Contains Element            ${topic_annehmlichkeit}
+    Mouse Over                                  ${topic_annehmlichkeit}
+    Click Element                               ${topic_annehmlichkeit}
+
     
 Select Station
     Wait Until Page Contains Element            ${Select_Station}
@@ -42,6 +101,14 @@ Select Lemgo BHF
 Select Bösingfeld BHF
     Mouse Over                                  ${Bösingfeld_HBF}
     Click Element                               ${Bösingfeld_HBF}
+
+Select BÜ Bruchstraße BHF
+    Mouse Over                                  ${BÜ_Bruchstr_HBF}
+    Click Element                               ${BÜ_Bruchstr_HBF}
+
+Select Brückenweg BHF
+    Mouse Over                                  ${Brückenweg_HBF}
+    Click Element                               ${Brückenweg_HBF}
     
 Weather Data
     Wait Until Page Contains Element            ${Temperature}
@@ -58,37 +125,45 @@ Weather Data
 Navigate To Abfahrt
     Click Element                               ${li_Abfahrt}
     Abfahrt Table Header Validation
-    Page Should Not Contain                     Keine Daten geladen (Anschlussverbindungen)
+    Page Should Not Contain                     Keine Daten geladen (Abfahrt)     #Data not provided yet from Telekom
 
 Navigate To Gesundheit
     Click Element                               ${li_Gesundheit}
     Gesundheit Table Header Validation
-    #Page Should Not Contain                     Keine Daten geladen (Thema Gesundheit)     #Data not provided yet from Telekom
+    Page Should Not Contain                     Keine Daten geladen (Gesundheit)     #Data not provided yet from Telekom
 
 Navigate To Shopping
     Click Element                               ${li_Shopping}
     Shopping Table Header Validation
-    #Page Should Not Contain                     Keine Daten geladen (Thema Shopping)       #Data not provided yet from Telekom
+    Page Should Not Contain                     Keine Daten geladen (Shopping)       #Data not provided yet from Telekom
 
 Navigate To Unterkunft
     Click Element                               ${li_Unterkunft}
     Unterkunft Table Header Validation
-    Page Should Not Contain                     Keine Daten geladen (Übernachtungsoptionen)
+    Page Should Not Contain                     Keine Daten geladen (unterkunft)
 
 Navigate To Gastronomie
     Click Element                               ${li_Gastronomie}
     Gastronomie Table Header Validation
-    #Page Should Not Contain                     Keine Daten geladen (Gastronomie)          #Data not provided yet from Telekom
+    Page Should Not Contain                     Keine Daten geladen (Gastronomie)          #Data not provided yet from Telekom
 
 Navigate To Sehenswürdigkeit
     Click Element                               ${li_Sehenswürdigkeiten}
     Sehenswürdigkeiten Table Header Validation
-    #Page Should Not Contain                     Keine Daten geladen (Sehenswürdigkeiten)   #Data not provided yet from Telekom
+    Page Should Not Contain                     Keine Daten geladen (Sehenswürdigkeiten)   #Data not provided yet from Telekom
 
 Navigate To Kultur
     Click Element                               ${li_Kultur}
     Kultur Table Header Validation
-    #Page Should Not Contain                     Keine Daten geladen (Entertainment)        #Data not provided yet from Telekom
+    Page Should Not Contain                     Keine Daten geladen (Kultur)        #Data not provided yet from Telekom
+
+Navigate To Annehmlichkeit
+    Click Element                               ${li_annehmlichkeit}
+    Annehmlichkeit Table Header Validation
+    Page Should Not Contain                     Keine Daten geladen (Annehmlichkeit)        #Data not provided yet from Telekom
+
+Navigate To Leihräder/-roller
+    Click Element                               ${li_leihräder}
     
 Abfahrt Table Header Validation
     Wait Until Page Contains Element            ${Abfahrt_table}
@@ -103,29 +178,32 @@ Gesundheit Table Header Validation
     Table Column Should Contain                 ${Gesundheit_table}                     1                   Name
     Table Column Should Contain                 ${Gesundheit_table}                     2                   Ausrichtung
     Table Column Should Contain                 ${Gesundheit_table}                     3                   Addresse
-    Table Column Should Contain                 ${Gesundheit_table}                     4                   Entfernung
-    Table Column Should Contain                 ${Gesundheit_table}                     5                   Telefon
-    Table Column Should Contain                 ${Gesundheit_table}                     6                   Website
+    Table Column Should Contain                 ${Gesundheit_table}                     4                   Luftlinie
+    Table Column Should Contain                 ${Gesundheit_table}                     5                   Route
+    Table Column Should Contain                 ${Gesundheit_table}                     6                   Telefon
+    Table Column Should Contain                 ${Gesundheit_table}                     7                   Website
 
 Shopping Table Header Validation
     Wait Until Page Contains Element            ${Shopping_table}
     Table Column Should Contain                 ${Shopping_table}                       1                   Name
     Table Column Should Contain                 ${Shopping_table}                       2                   Art
     Table Column Should Contain                 ${Shopping_table}                       3                   Addresse
-    Table Column Should Contain                 ${Shopping_table}                       4                   Entfernung
-    Table Column Should Contain                 ${Shopping_table}                       5                   Telefon
-    Table Column Should Contain                 ${Shopping_table}                       6                   Geöffnet
-    Table Column Should Contain                 ${Shopping_table}                       7                   Rollstuhl geeignet
+    Table Column Should Contain                 ${Shopping_table}                       4                   Luftlinie
+    Table Column Should Contain                 ${Shopping_table}                       5                   Route
+    Table Column Should Contain                 ${Shopping_table}                       6                   Telefon
+    Table Column Should Contain                 ${Shopping_table}                       7                   Geöffnet
+    Table Column Should Contain                 ${Shopping_table}                       8                   Rollstuhl geeignet
 
 Unterkunft Table Header Validation
     Wait Until Page Contains Element            ${Unterkunft_table}
     Table Column Should Contain                 ${Unterkunft_table}                     1                   Name
     Table Column Should Contain                 ${Unterkunft_table}                     2                   Art
     Table Column Should Contain                 ${Unterkunft_table}                     3                   Addresse
-    Table Column Should Contain                 ${Unterkunft_table}                     4                   Entfernung
-    Table Column Should Contain                 ${Unterkunft_table}                     5                   Telefon
-    Table Column Should Contain                 ${Unterkunft_table}                     6                   E-Mail
-    Table Column Should Contain                 ${Unterkunft_table}                     7                   Website
+    Table Column Should Contain                 ${Unterkunft_table}                     4                   Luftlinie
+    Table Column Should Contain                 ${Unterkunft_table}                     5                   Route
+    Table Column Should Contain                 ${Unterkunft_table}                     6                   Telefon
+    Table Column Should Contain                 ${Unterkunft_table}                     7                   E-Mail
+    Table Column Should Contain                 ${Unterkunft_table}                     8                   Website
 Gastronomie Table Header Validation
     Wait Until Page Contains Element            ${Gastronomie_table}
     Table Column Should Contain                 ${Gastronomie_table}                    1                   Name
@@ -133,23 +211,37 @@ Gastronomie Table Header Validation
     Table Column Should Contain                 ${Gastronomie_table}                    3                   Vegetarisch
     Table Column Should Contain                 ${Gastronomie_table}                    4                   Vegan
     Table Column Should Contain                 ${Gastronomie_table}                    5                   Addresse
-    Table Column Should Contain                 ${Gastronomie_table}                    6                   Entfernung
-    Table Column Should Contain                 ${Gastronomie_table}                    7                   Website
-    Table Column Should Contain                 ${Gastronomie_table}                    8                   Geöffnet
+    Table Column Should Contain                 ${Gastronomie_table}                    6                   Luftlinie
+    Table Column Should Contain                 ${Gastronomie_table}                    7                   Route
+    Table Column Should Contain                 ${Gastronomie_table}                    8                   Website
+    Table Column Should Contain                 ${Gastronomie_table}                    9                   Geöffnet
 Sehenswürdigkeiten Table Header Validation
     Wait Until Page Contains Element            ${Sehenswürdigkeiten_table}
     Table Column Should Contain                 ${Sehenswürdigkeiten_table}            1                   Name
     Table Column Should Contain                 ${Sehenswürdigkeiten_table}            2                   Art
     Table Column Should Contain                 ${Sehenswürdigkeiten_table}            3                   Beschreibung
     Table Column Should Contain                 ${Sehenswürdigkeiten_table}            4                   Addresse
-    Table Column Should Contain                 ${Sehenswürdigkeiten_table}            5                   Entfernung
+    Table Column Should Contain                 ${Sehenswürdigkeiten_table}            5                   Luftlinie
+    Table Column Should Contain                 ${Sehenswürdigkeiten_table}            6                   Route
 Kultur Table Header Validation
     Wait Until Page Contains Element            ${Kultur_table}
     Table Column Should Contain                 ${Kultur_table}                        1                   Name
     Table Column Should Contain                 ${Kultur_table}                        2                   Art
     Table Column Should Contain                 ${Kultur_table}                        3                   Addresse
-    Table Column Should Contain                 ${Kultur_table}                        4                   Entfernung
-    Table Column Should Contain                 ${Kultur_table}                        5                   Telefon
-    Table Column Should Contain                 ${Kultur_table}                        6                   E-Mail
-    Table Column Should Contain                 ${Kultur_table}                        7                   Geöffnet
-    Table Column Should Contain                 ${Kultur_table}                        8                   Rollstuhl geeignet
+    Table Column Should Contain                 ${Kultur_table}                        4                   Luftlinie
+    Table Column Should Contain                 ${Kultur_table}                        5                   Route
+    Table Column Should Contain                 ${Kultur_table}                        6                   Telefon
+    Table Column Should Contain                 ${Kultur_table}                        7                   E-Mail
+    Table Column Should Contain                 ${Kultur_table}                        8                   Geöffnet
+    Table Column Should Contain                 ${Kultur_table}                        9                   Rollstuhl geeignet
+
+Annehmlichkeit Table Header Validation
+    Wait Until Page Contains Element            ${Annehmlichkeit_table}
+    Table Column Should Contain                 ${Annehmlichkeit_table}                1                   Name
+    Table Column Should Contain                 ${Annehmlichkeit_table}                2                   Service
+    Table Column Should Contain                 ${Annehmlichkeit_table}                3                   Addresse
+    Table Column Should Contain                 ${Annehmlichkeit_table}                4                   Luftlinie
+    Table Column Should Contain                 ${Annehmlichkeit_table}                5                   Route
+    Table Column Should Contain                 ${Annehmlichkeit_table}                6                   Gebühr
+    Table Column Should Contain                 ${Annehmlichkeit_table}                7                   Geöffnet
+
