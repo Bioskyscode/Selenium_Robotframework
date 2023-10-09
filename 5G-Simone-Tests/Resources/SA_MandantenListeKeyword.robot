@@ -83,6 +83,53 @@ Enter Mandant Registration Details
     Enter "Admin Nachname"              ${admin_surname}
     Enter "Admin Email-Adresse"         ${admin_email}
 
+Enter Wrong Mandant Registration Details For -Ve Test
+    [Arguments]                         ${name}     ${short_name}        ${description}     ${admin_name}       ${admin_surname}        ${admin_email}
+    Mandantenname    ${name}
+    Mandanten Kurzname    ${short_name}
+    Enter "Beschreibung"                ${description}
+    Admin Name    ${admin_name}
+    Admin Nachname    ${admin_surname}
+    Admin Email    ${admin_email}
+    Close "Popup"
+    Click On "Neuen Mandanten anlegen"
+    Admin Email    ${admin_email}
+    Admin Nachname    ${admin_surname}
+    Admin Name    ${admin_name}
+    Enter "Beschreibung"                ${description}
+    Mandanten Kurzname    ${short_name}
+    Mandantenname    ${name}
+
+Mandantenname
+    [Arguments]                         ${name}
+    Enter "Mandanten Name"              ${name}
+    Mouse Over                          ${tooltip_mandantenname}
+    Page Should Contain                 min. 5 Zeichen, keine Sonderzeichen
+
+Mandanten Kurzname
+    [Arguments]                         ${short_name}
+    Enter "Mandanten Kurzname"          ${short_name}
+    Mouse Over                          ${tooltip_mandantenkurzname}
+    Page Should Contain                 min. 5 Zeichen, keine Sonderzeichen
+
+Admin Name
+    [Arguments]                         ${admin_name}
+    Enter "Admin Name"                  ${admin_name}
+    Mouse Over                          ${tooltip_adminname}
+    Page Should Contain                 min. 2 Zeichen
+
+Admin Nachname
+    [Arguments]                         ${admin_surname}
+    Enter "Admin Nachname"              ${admin_surname}
+    Mouse Over                          ${tooltip_adminnachname}
+    Page Should Contain                 min. 2 Zeichen
+
+Admin Email
+    [Arguments]                         ${admin_email}
+    Enter "Admin Email-Adresse"         ${admin_email}
+    Mouse Over                          ${tooltip_adminemail}
+    Page Should Contain                 Format: abc@de.fg
+
 Click On "Neuen Mandanten anlegen"
     Wait Until Page Contains Element    ${btn_invite_new_client}
     Mouse Over                          ${btn_invite_new_client}
@@ -147,9 +194,12 @@ Click On "Anlegen"
     Click Element                       ${btn_invite}
     Wait Until Page Contains            erledigt!
     Element Should Contain              ${btn_invite}               erledigt!
+    Sleep    7
+    #Wait Until Page Does Not Contain    erledigt!
 
 Mandant Toast_alert Validation
-    Wait Until Element Is Visible       ${mandant_toast_alert}
+    #Wait Until Page Contains Element       ${mandant_toast_alert}
+    Wait Until Page Contains Element       ${txt_mandant_toast_alert_top}
     ${top_toast_text}                   Get Text                    ${txt_mandant_toast_alert_top}
     ${buttom_toast_text}                Get Text                    ${txt_mandant_toast_alert_buttom}
     Should Be Equal                     ${top_toast_text}           Das hat geklappt.

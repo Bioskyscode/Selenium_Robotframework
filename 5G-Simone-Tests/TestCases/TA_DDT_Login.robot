@@ -8,10 +8,11 @@ Test Template   Validate Tenant Admin -ve Login
 
 *** Test Cases ***
 DDTTenantAdminLogin using ${email} and ${password}
-    [Tags]              Login       DDT         TA      TA08
+    [Tags]                  Login       DDT         TA      TA08
+
 *** Keywords ***
 Validate Tenant Admin -ve Login
-    [Arguments]     ${email}    ${password}
+    [Arguments]                 ${email}    ${password}
     TA_LoginKeywords.Negative Login Attempt To TA Page    ${email}    ${password}
 
 

@@ -22,12 +22,17 @@ title_mandanten = '//*[@id="header-text"]'
 txt_biqx = '//*[@id="root"]/div/div/div[3]/div/div[4]/span/a/span'
 tbl_Mandanten_liste = '//*[@id="tenant-table"]'
 
-        # Invite New Client Popup
+        # SA Invite New Client Popup
 btn_invite_new_client = 'xpath://*[@id="invite-new-tenant-button"]'
 txt_clientName = 'xpath://*[@id="tenantName"]'
+tooltip_mandantenname = '//*[@id="invalid-input-icon-input-tooltip-tenantName"]'
 txt_clientShortName = 'xpath://*[@id="tenantShort"]'
+tooltip_mandantenkurzname = '//*[@id="invalid-input-icon-input-tooltip-tenantShort"]'
 txt_clientDescription = 'xpath://*[@id="tenantDescription"]'
 txt_adminName = 'xpath://*[@id="adminName"]'
+tooltip_adminname = '//*[@id="invalid-input-icon-input-tooltip-adminName"]'
+tooltip_adminnachname = '//*[@id="invalid-input-icon-input-tooltip-adminSurName"]'
+tooltip_adminemail = '//*[@id="invalid-input-icon-input-tooltip-adminEmail"]'
 txt_adminSurname = 'xpath://*[@id="adminSurName"]'
 txt_adminEmail = 'xpath://*[@id="adminEmail"]'
 btn_continue = '//*[@id="continue-tenant-invitation"]'
@@ -57,7 +62,7 @@ btn_addNewUser = 'xpath://*[@id="toggle-add-user-overlay"]'
 btn_addNewUser_closePopup = '//*[@id="create-user-dialog"]/div[1]/div[2]/button'
 btn_addNewUser_closeInnerPopup = '//*[@id="check-dialog"]/div[1]/div[2]/button'
 tbl_Benutzerliste = '//*[@id="user-table"]'
-
+row_account_Owner = '//div[@id="user-table"]//table[@role="table"]/tbody/tr[2]'
 
         # Invite user
 txt_addNewUser_email = 'xpath://*[@id="userEmail"]'

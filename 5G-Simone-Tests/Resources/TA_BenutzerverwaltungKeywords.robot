@@ -239,3 +239,18 @@ Search For Tenants
     Wait Until Page Contains Element                        ${txt_searchUser}
     Mouse Over                                              ${txt_searchUser}
     input text                                              ${txt_searchUser}                               ${name}
+
+Select Own Account
+    Wait Until Page Contains Element                        ${row_account_Owner}
+    Mouse Over                                              ${row_account_Owner}
+    Click Element                                           ${row_account_Owner}
+
+Click Disabled "Benutzer bearbeitung" Button
+    Wait Until Page Contains Element                        ${btn_editUser}
+    Mouse Over                                              ${btn_editUser}
+    Page Should Contain                                     Bearbeitung eigener Daten nicht möglich
+
+Click Disabled "Benutzer deaktivieren" Button
+    Wait Until Page Contains Element                        ${btn_deactivateUser}
+    Mouse Over                                              ${btn_deactivateUser}
+    Page Should Contain                                     Bearbeitung eigener Daten nicht möglich

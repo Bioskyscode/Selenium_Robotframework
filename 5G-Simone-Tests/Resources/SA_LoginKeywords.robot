@@ -1,5 +1,5 @@
 *** Settings ***
-Library                 SeleniumLibrary         timeout=00:00:30
+Library                 SeleniumLibrary         timeout=00:00:10
 Variables               ../PageObject/5GSimonePages_locators.py
 Resource                ../Resources/baseVariables.robot
 Resource                ../Resources/Common.robot
