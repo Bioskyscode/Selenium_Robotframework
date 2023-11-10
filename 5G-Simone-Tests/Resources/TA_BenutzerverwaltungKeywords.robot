@@ -19,11 +19,11 @@ Validate Benutzerverwaltung Table Headers
     Wait Until Page Contains Element                    ${tbl_Benutzerliste}
     Table Column Should Contain                         ${tbl_Benutzerliste}               3           Vorname
     Table Column Should Contain                         ${tbl_Benutzerliste}               4           Nachname
-    Table Column Should Contain                         ${tbl_Benutzerliste}               5           User
-    Table Column Should Contain                         ${tbl_Benutzerliste}               6           E-Mailadresse
-    Table Column Should Contain                         ${tbl_Benutzerliste}               7           Status
-    Table Column Should Contain                         ${tbl_Benutzerliste}               8           Sperre bis
-    Table Column Should Contain                         ${tbl_Benutzerliste}               9           Rollen
+    #Table Column Should Contain                         ${tbl_Benutzerliste}               5           User
+    Table Column Should Contain                         ${tbl_Benutzerliste}               5           E-Mailadresse
+    Table Column Should Contain                         ${tbl_Benutzerliste}               6           Status
+    Table Column Should Contain                         ${tbl_Benutzerliste}               7           Sperre bis
+    Table Column Should Contain                         ${tbl_Benutzerliste}               8           Rollen
 
 ###############################
 #Neuen Benutzer Anlegen

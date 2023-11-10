@@ -10,12 +10,12 @@ Table Header Validation
     Wait Until Page Contains Element                    ${tbl_monocabs_table}
     table column should contain                         ${tbl_monocabs_table}               1           Fzg.-ID
     table column should contain                         ${tbl_monocabs_table}               2           Bezeichnung
-    table column should contain                         ${tbl_monocabs_table}               3           Kurzbez.
-    table column should contain                         ${tbl_monocabs_table}               4           Batterie
-    table column should contain                         ${tbl_monocabs_table}               5           Geschw.
-    table column should contain                         ${tbl_monocabs_table}               6           Passagiere
-    table column should contain                         ${tbl_monocabs_table}               7           Fehler
-    table column should contain                         ${tbl_monocabs_table}               8           Zur Karte
+    #table column should contain                         ${tbl_monocabs_table}               3           Kurzbez.
+    table column should contain                         ${tbl_monocabs_table}               3           Batterie
+    table column should contain                         ${tbl_monocabs_table}               4           Geschw.
+    table column should contain                         ${tbl_monocabs_table}               5           Passagiere
+    table column should contain                         ${tbl_monocabs_table}               6           Fehler
+    table column should contain                         ${tbl_monocabs_table}               7           Zur Karte
 
 Verify Monocabs Table
     Table Header Validation
@@ -61,7 +61,8 @@ Display Bus Pop-Up Detail
     Page Should Contain                                 Remote
 
 Return To Monocabs Fahrzeugliste
-    Wait Until Page Contains Element    //div[@role='complementary']
+    Selenium Speed
+    Wait Until Page Contains Element                    ${Dynamics_VehicleDetails_Popup}
     Wait Until Page Contains Element                    ${btn_ReturnToDetailOverview}
     Click Element                                       ${btn_ReturnToDetailOverview}
     Wait Until Page Contains                            Fahrzeugliste

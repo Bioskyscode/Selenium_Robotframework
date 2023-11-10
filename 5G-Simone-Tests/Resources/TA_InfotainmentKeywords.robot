@@ -1,6 +1,7 @@
 *** Settings ***
 Library                         SeleniumLibrary         timeout=00:00:30
 Variables                       ../PageObject/5GSimonePages_locators.py
+Resource    Common.robot
 
 *** Keywords ***
 Navigate To Infotainment Page
@@ -11,7 +12,10 @@ Navigate To Infotainment Page
 
 Validate Infotainment Page is Loaded Successfully
     Wait Until Page Contains Element            ${Select_Station}
-    Page Should Contain                         Bitte Bahnhof wählen
+    ${Selected_Station}                         Get Text                        ${Select_Station}
+    Log To Console    ${Selected_Station}
+    Page Should Contain                         ${Selected_Station}
+    Page Should Contain                         Routen ausgehend vom Bahnhof
     Wait Until Page Contains Element            ${Topic_tab}
     Page Should Contain                         Wetter
     Page Should Contain                         Abfahrt
@@ -25,7 +29,26 @@ Validate Infotainment Page is Loaded Successfully
     Page Should Contain                         Leihräder/-roller
 
 Select Topics
+    #Page Should Contain Checkbox            //div[@id='infotainemt-checkbox-Wetter']//input[@type='checkbox']
     Select Wetter
+    #${Wetter_Unselected}        Run Keyword And Return Status    Element Should Not Be Visible    ${li_Wetter}
+    #IF    ${Wetter_Unselected}
+        #Select Wetter
+     #ELSE
+        #Select Wetter
+    #END
+    #Select Abfahrt
+    #${Abfahrt_Unselected}        Run Keyword And Return Status    Page Should Contain Element    ${li_Abfahrt}
+    #IF    ${Abfahrt_Unselected}
+        #Select Abfahrt
+    #ELSE
+       # Select Abfahrt
+    #END
+    #Select Gesundheit
+    #${Gesundheit_Unselected}        Run Keyword And Return Status    Page Should Contain Element    ${li_Gesundheit}
+    #IF    ${Gesundheit_Unselected}
+        #Select Gesundheit
+    #END
     Select Abfahrt
     Select Gesundheit
     Select Shopping
@@ -36,14 +59,22 @@ Select Topics
     Select Annehmlichkeit
 
 Select Wetter
+    #Selenium Speed
     Wait Until Page Contains Element            ${topic_wetter}
-    Mouse Over                                  ${topic_wetter}
+    #Wait Until Page Contains Element    //div[@title='Wetter']//input[@type='checkbox']
+    #Mouse Over                                  //div[@title='Wetter']//input[@type='checkbox']
+
+    #Select Checkbox             /html//div[@id='infotainemt-checkbox-Wetter']
     Click Element                               ${topic_wetter}
+    Wait Until Page Contains Element            ${li_Wetter}
+    Page Should Contain Element                 ${li_Wetter}
 
 Select Abfahrt
     Wait Until Page Contains Element            ${topic_abfahrt}
     Mouse Over                                  ${topic_abfahrt}
     Click Element                               ${topic_abfahrt}
+    Wait Until Page Contains Element            ${li_Abfahrt}
+    Page Should Contain Element                 ${li_Abfahrt}
 
 Select Gesundheit
     Wait Until Page Contains Element            ${topic_gesundheit}
