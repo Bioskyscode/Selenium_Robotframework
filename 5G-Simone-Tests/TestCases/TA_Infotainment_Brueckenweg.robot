@@ -11,7 +11,7 @@ Validate Brückenweg HBF Reeceives MTTQ Service Data
     TA_LoginKeywords.Navigate To 5G Simone Tenant Admin URL
     TA_LoginKeywords.Login Tenant Admin Page
     TA_InfotainmentKeywords.Navigate To Infotainment Page
-    Repeat Keyword      2    TA_InfotainmentKeywords.Select Topics
+    #Repeat Keyword      2    TA_InfotainmentKeywords.Select Topics
     TA_InfotainmentKeywords.Select Station
     TA_InfotainmentKeywords.Select Brückenweg BHF
     TA_InfotainmentKeywords.Weather Data

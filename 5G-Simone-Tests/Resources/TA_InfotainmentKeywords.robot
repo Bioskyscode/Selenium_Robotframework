@@ -29,7 +29,8 @@ Validate Infotainment Page is Loaded Successfully
     Page Should Contain                         Leihräder/-roller
 
 Select Topics
-    #Page Should Contain Checkbox            //div[@id='infotainemt-checkbox-Wetter']//input[@type='checkbox']
+    #Page Should Contain Checkbox            //div[@id='infotainemt-checkbox-Wetter']//div[@class='p-checkbox-box p-highlight']
+    #Select Checkbox    //div[@id='infotainemt-checkbox-Wetter']//input[@type='checkbox']
     Select Wetter
     #${Wetter_Unselected}        Run Keyword And Return Status    Element Should Not Be Visible    ${li_Wetter}
     #IF    ${Wetter_Unselected}
@@ -64,8 +65,9 @@ Select Wetter
     #Wait Until Page Contains Element    //div[@title='Wetter']//input[@type='checkbox']
     #Mouse Over                                  //div[@title='Wetter']//input[@type='checkbox']
 
-    #Select Checkbox             /html//div[@id='infotainemt-checkbox-Wetter']
-    Click Element                               ${topic_wetter}
+    Select Checkbox             //div[@id='infotainemt-checkbox-Wetter']//div[@class='p-checkbox-box p-highlight']
+    #Select Checkbox    //div[@id='infotainemt-checkbox-Wetter']//input[@type='checkbox']
+    #Click Element                               ${topic_wetter}
     Wait Until Page Contains Element            ${li_Wetter}
     Page Should Contain Element                 ${li_Wetter}
 
