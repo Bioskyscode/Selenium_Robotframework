@@ -2,6 +2,7 @@
 Library                     SeleniumLibrary         timeout=00:00:30
 Variables                   ../PageObject/5GSimonePages_locators.py
 Resource                        ../Resources/baseVariables.robot
+Resource    Common.robot
 
 *** Keywords ***
 Open Camera View
@@ -21,6 +22,7 @@ Activate "Remote Steuerung"
     Click Element                       ${lnk_RemoteSteuerungAktivieren}
 
 Toggle CameraView-fahrtrichtungRecht ACtivation-Deactivation Button
+    Selenium Speed
     Wait Until Page Contains Element    ${box_fahrtrichtungRecht}
     Element Should Contain              ${box_fahrtrichtungRecht}                   Anzeige inaktiv
     Click Element                       ${svg_activate_deactivate_fahrtrichtungRecht}
@@ -29,6 +31,7 @@ Toggle CameraView-fahrtrichtungRecht ACtivation-Deactivation Button
     Element Should Contain              ${box_fahrtrichtungRecht}                   Anzeige inaktiv
 
 Toggle CameraView-kabine ACtivation-Deactivation Button
+    Selenium Speed
     Wait Until Page Contains Element    ${box_kabine}
     Element Should Contain              ${box_kabine}                               Anzeige inaktiv
     Click Element                       ${svg_activate_deactivate_kabine}

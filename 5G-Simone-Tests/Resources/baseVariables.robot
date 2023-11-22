@@ -5,8 +5,8 @@ ${firefox}                                  firefox
 
 ${TA_Password}                 HalliGalli2!
 #${tenantAdmin_AzureURL}                          http://20.52.117.91:3000/welcome
-${tenantAdmin_URL_productionStage}          http://82.165.231.18:3000/welcome
-${tenantAdmin_URL_testingStage}             http://82.165.231.18:3001/welcome
+${tenantAdmin_URL_productionStage}          https://5gsimone.staging.biqx.de                              #http://82.165.231.18:3000/welcome
+${tenantAdmin_URL_testingStage}             https://5gsimone-test.staging.biqx.de                         #http://82.165.231.18:3001/welcome
 ${tenantAdmin_Email_testing}                proj.testing@biqx.de
 ${tenantAdmin_Email_simone}                 proj.simone@biqx.de
 ${tenantAdmin_Email_stadtbus}               proj.stadtbus@biqx.de
@@ -30,8 +30,8 @@ ${mandant_password_abiodun}                 Project5GSimone#
 #${tenant_2_Password}  5GSimoneProject@
 
 #${superAdmin_AzureURL}                           http://20.52.117.91:3000/login/superadmin
-${superAdmin_URL_ProductionStage}           http://82.165.231.18:3000/login/superadmin
-${superAdmin_URL_testingStage}              http://82.165.231.18:3001/login/superadmin
+${superAdmin_URL_ProductionStage}           ${tenantAdmin_URL_productionStage}/login/superadmin
+${superAdmin_URL_testingStage}              ${tenantAdmin_URL_testingStage}/login/superadmin
 ${superAdmin_Email}                         detlef.regehr@biqx.de
 ${SA_Password_ProductionStage}              Yy!45678
 ${SA_Password_testingStage}                 HalliGalli2!
@@ -75,7 +75,7 @@ ${tenant1}                                  Götz
 ${tenant2}                                  Jennifer
 ${tenant3}                                  Brian
 
-${CameraView_URL_In_New_Tab}                http://82.165.231.18:3001/monocabs/${Vehicle}
+${CameraView_URL_In_New_Tab}                ${tenantAdmin_URL_testingStage}/monocabs/${Vehicle}
 
 ############# Xpaths with Variables ###########
 ${img_vehicle}                              //img[@title="${Vehicle}"]

@@ -157,8 +157,8 @@ Hannover_station = '//*[@id="root"]/div/div/div[4]/div/div/div[1]/div[1]/div[4]/
 btn_Qos = '//a[@id="qos-link"]'
 
             # API
-api_base_url_testingStage = 'http://82.165.231.18:3002'
-api_base_url_productionStage = 'http://82.165.231.18'
+api_base_url_testingStage = 'https://5gsimone-test.staging.biqx.de:6100'
+api_base_url_productionStage = 'https://5gsimone.staging.biqx.de:5100'
 login_url = '/Account/Login'
 Vehicle_moveUpdate_url = '/VehicleMessage/MoveUpdate'
 

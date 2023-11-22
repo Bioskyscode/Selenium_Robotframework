@@ -7,7 +7,7 @@ Test Setup                      Common.Start Web Test
 Test Teardown                   Common.Stop Web Test
 
 *** Test Cases ***
-Validate Vehicle Position on Map
+Validate Vehicle and Stations Position on Map
     [Tags]          Map         Vehicle         TA      TA09
     TA_LoginKeywords.Navigate To 5G Simone Tenant Admin URL
     TA_LoginKeywords.Login Tenant Admin Page
