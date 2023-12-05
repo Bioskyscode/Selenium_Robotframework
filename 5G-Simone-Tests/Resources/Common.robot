@@ -1,5 +1,6 @@
 *** Settings ***
 Library             SeleniumLibrary
+Library    DateTime
 Resource            ../Resources/baseVariables.robot
 
 *** Keywords ***
@@ -45,4 +46,7 @@ Resize Browser Window
     Set Window Size                     1280                    800
     Set Window Size                     800                     800
     Maximize Browser Window
+
+
+
     
