@@ -47,7 +47,7 @@ ${lon}                                      10.0000
 
 ############ API
 &{TaLogin_request_body}                      email=${tenantAdmin_Email_testing}    password=${TA_Password}
-&{SaLogin_request_body}                      email=${superAdmin_Email}    password=${SA_Password_ProductionStage}
+&{SaLogin_request_body}                      email=${superAdmin_Email}    password=${SA_Password_testingStage}
 ${VehicleMoveUpdate_resBody}                 {"cameras": [{"url": "/VID_rechts.mp4","focus": "Fahrtrichtung Rechts"},{"url": "/VID_cabin.mp4","focus": "Kabine"}],
 ...     "remoteControl": {"startupParams": "RemoteControl"},
 ...     "gpsFix": "string",

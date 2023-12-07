@@ -141,8 +141,8 @@ Create Get Request Session For "MQTTService_StationDataIsSubscribed"
 
 Create Get Request Session For "AccountTenant_GetTenantLinksAllPaged"
     Create Relative Get Session         ${Account_GetTenantLinksAllPaged}
-    #Set Global Variable                 ${User_Id}                              ${Get_response_body.json()['data'][20]['userId']}
-    #Set Global Variable                 ${Tenant_Id}                            ${Get_response_body.json()['data'][20]['tenantId']}
+    Set Global Variable                 ${User_Id}                              ${Get_response_body.json()['data'][20]['userId']}
+    Set Global Variable                 ${Tenant_Id}                            ${Get_response_body.json()['data'][20]['tenantId']}
     Set Global Variable                 ${User_Id2}                             ${Get_response_body.json()['data'][0]['userId']}
     Set Global Variable                 ${Tenant_Id2}                           ${Get_response_body.json()['data'][0]['tenantId']}
     Log To Console                      "AccountTenant_GetTenantLinksAllPaged": ${Get_response_body.content}
