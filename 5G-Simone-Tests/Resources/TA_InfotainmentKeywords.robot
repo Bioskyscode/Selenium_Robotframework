@@ -144,6 +144,7 @@ Select Brückenweg BHF
     Click Element                               ${Brückenweg_HBF}
     
 Weather Data
+    Common.Selenium Speed
     Wait Until Page Contains Element            ${Temperature}
     Should Not Be Empty                         ${Temperature}
     Wait Until Page Contains Element            ${Weather_Icon}

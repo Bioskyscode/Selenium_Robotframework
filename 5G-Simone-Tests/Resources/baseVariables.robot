@@ -47,7 +47,7 @@ ${lon}                                      10.0000
 
 ############ API
 &{TaLogin_request_body}                      email=${tenantAdmin_Email_testing}    password=${TA_Password}
-&{SaLogin_request_body}                      email=${superAdmin_Email}    password=${SA_Password_testingStage}
+&{SaLogin_request_body}                      email=${superAdmin_Email}    password=${SA_Password_ProductionStage}
 ${VehicleMoveUpdate_resBody}                 {"cameras": [{"url": "/VID_rechts.mp4","focus": "Fahrtrichtung Rechts"},{"url": "/VID_cabin.mp4","focus": "Kabine"}],
 ...     "remoteControl": {"startupParams": "RemoteControl"},
 ...     "gpsFix": "string",
@@ -90,3 +90,5 @@ ${Max_Response_Time}                        1.500
 ######## JSON ############
 ${CheckForSufficientClaims_requestBody}                 [{"itemId": 0, "moduleId": 6, "entityOrFunctionId": 5, "requieredRights": 32}]
 ${VehicleQuery_GetByGlobalIds_requestBody}              ["local-vehicle", "Biqx", "VT_1005", "TestZug3"]
+
+

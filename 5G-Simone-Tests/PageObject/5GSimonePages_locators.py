@@ -226,6 +226,8 @@ TypeOfPoint_GetById = '/TypeOfPoint/GetById/'
 TypeOfPoint_Delete = '/TypeOfPoint/Delete/'
 Point_Create = '/Point/Create'
 Point_GetById = '/Point/GetById/'
+Point_GetAllPaged = '/Point/GetAllPaged'
+SelfService_GetLastInfotainmentTopics = '/SelfService/GetLastInfotainmentTopics'
 
             # Infotainment
 li_infotainment = '//*[@id="infotainment-link"]'

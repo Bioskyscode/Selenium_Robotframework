@@ -122,6 +122,14 @@ Create Get Request Session For "Role_GetAllPaged"
     Create Relative Get Session         ${Role_GetAllPaged}
     Log To Console                      "Role_GetAllPaged": ${Get_response_body.content}
 
+Create Get Request Session For "SelfService_GetLastInfotainmentTopics"
+    Create Relative Get Session         ${SelfService_GetLastInfotainmentTopics}
+    Log To Console                      "SelfService_GetLastInfotainmentTopics": ${Get_response_body.content}
+
+Create Get Request Session For "Point_GetAllPaged"
+    Create Relative Get Session         ${Point_GetAllPaged}
+    Log To Console                      "Point_GetAllPaged": ${Get_response_body.content}
+
 Create Get Request Session For "TypeOfPoint_GetAllPaged"
     Create Relative Get Session         ${TypeOfPoint_GetAllPaged}
     Log To Console                      "TypeOfPoint_GetAllPaged": ${Get_response_body.content}
@@ -133,8 +141,8 @@ Create Get Request Session For "MQTTService_StationDataIsSubscribed"
 
 Create Get Request Session For "AccountTenant_GetTenantLinksAllPaged"
     Create Relative Get Session         ${Account_GetTenantLinksAllPaged}
-    Set Global Variable                 ${User_Id}                              ${Get_response_body.json()['data'][20]['userId']}
-    Set Global Variable                 ${Tenant_Id}                            ${Get_response_body.json()['data'][20]['tenantId']}
+    #Set Global Variable                 ${User_Id}                              ${Get_response_body.json()['data'][20]['userId']}
+    #Set Global Variable                 ${Tenant_Id}                            ${Get_response_body.json()['data'][20]['tenantId']}
     Set Global Variable                 ${User_Id2}                             ${Get_response_body.json()['data'][0]['userId']}
     Set Global Variable                 ${Tenant_Id2}                           ${Get_response_body.json()['data'][0]['tenantId']}
     Log To Console                      "AccountTenant_GetTenantLinksAllPaged": ${Get_response_body.content}
@@ -314,16 +322,16 @@ Convert "AccountTenant_LockOnTenant" Request Body To Json
     ${Reason}                                                                     FakerLibrary.Sentence
     Request Header
     Create Get Request Session For "AccountTenant_GetTenantLinksAllPaged"
-    ${AccountTenant_LockOnTenant_requestBody}                                     Set Variable                                                {"userId": "${User_Id2}", "tenantId": "${Tenant_Id2}", "reasons": "${Reason}"}
+    ${AccountTenant_LockOnTenant_requestBody}                                     Set Variable                                                {"userId": "${User_Id}", "tenantId": "${Tenant_Id}", "reasons": "${Reason}"}
     ${json_AccountTenant_LockOnTenant}                                            Evaluate                                                    json.loads($AccountTenant_LockOnTenant_requestBody)
     [Return]                                                                      ${json_AccountTenant_LockOnTenant}
 
 Convert "AccountTenant_LockOnTenantTemporary" Request Body To Json
     ${Reason}                                                                     FakerLibrary.Sentence
-    ${FutureDate}                                                                 FakerLibrary.Future Datetime
+    ${FutureDate}                                                                 FakerLibrary.Date Time This Month
     Request Header
     Create Get Request Session For "AccountTenant_GetTenantLinksAllPaged"
-    ${AccountTenant_LockOnTenantTemporary_requestBody}                             Set Variable                                                {"lockUntil": "${FutureDate}", "userId": "${User_Id2}", "tenantId": "${Tenant_Id2}", "reasons": "${Reason}"}
+    ${AccountTenant_LockOnTenantTemporary_requestBody}                             Set Variable                                                {"lockUntil": "${FutureDate}", "userId": "${User_Id}", "tenantId": "${Tenant_Id}", "reasons": "${Reason}"}
     ${json_AccountTenant_LockOnTenantTemporary}                                    Evaluate                                                    json.loads($AccountTenant_LockOnTenantTemporary_requestBody)
     [Return]                                                                       ${json_AccountTenant_LockOnTenantTemporary}
 
