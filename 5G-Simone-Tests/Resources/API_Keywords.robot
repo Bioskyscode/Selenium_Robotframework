@@ -36,7 +36,6 @@ Create Relative Post Session
 Tenant Admin Login
     [Tags]      API
     Create Base Session
-    #Create Relative Post Session                            ${TA_login_url}           ${TaLogin_request_body}
     ${Login_response_body}               POST On Session                                ${API Session Alias}                                    ${TA_login_url}                    json=&{TaLogin_request_body}
     Set Global Variable                 ${auth_token}                                   ${Login_response_body.json()['token']}
     Validate Post Request is Successful
@@ -67,7 +66,6 @@ Validate Delete Request
 
 Validate Response Time IS Less Than 500ms
     ${elapsed_time}                     Subtract Date From Date                         ${End}    ${Begin}
-    #Log                                 response time:                                  ${elapsed_time}
     ${response_time}                    Evaluate                                        0<$elapsed_time<${Max_Response_Time}
     Should Be True                      ${response_time}                                msg=API response time should be less than 1.5s ms
 
@@ -145,11 +143,17 @@ Create Get Request Session For "AccountTenant_GetTenantLinksAllPaged"
     Set Global Variable                 ${Tenant_Id}                            ${Get_response_body.json()['data'][20]['tenantId']}
     Set Global Variable                 ${User_Id2}                             ${Get_response_body.json()['data'][0]['userId']}
     Set Global Variable                 ${Tenant_Id2}                           ${Get_response_body.json()['data'][0]['tenantId']}
+    Log To Console                      user21***: ${Get_response_body.json()['data'][20]}
+    Log To Console                      user0****: ${Get_response_body.json()['data'][0]}
     Log To Console                      "AccountTenant_GetTenantLinksAllPaged": ${Get_response_body.content}
 
 Create Get Request Session For "Vehicle_GetAllPaged"
     Create Relative Get Session         ${Vehicle_GetAllPaged}
     Log To Console                      "Vehicle_GetAllPaged": ${Get_response_body.content}
+
+Create Get Request Session For "Log_GetLogFiles"
+    Create Relative Get Session         ${Log_GetLogFiles}
+    Log To Console                      "Log_GetLogFiles": ${Get_response_body.content}
 
 Create Get Request Session For "VehicleType_GetAllPaged"
     Create Relative Get Session         ${VehicleType_GetAllPaged}
@@ -328,7 +332,7 @@ Convert "AccountTenant_LockOnTenant" Request Body To Json
 
 Convert "AccountTenant_LockOnTenantTemporary" Request Body To Json
     ${Reason}                                                                     FakerLibrary.Sentence
-    ${FutureDate}                                                                 FakerLibrary.Date Time This Month
+    ${FutureDate}                                                                 FakerLibrary.Future Datetime
     Request Header
     Create Get Request Session For "AccountTenant_GetTenantLinksAllPaged"
     ${AccountTenant_LockOnTenantTemporary_requestBody}                             Set Variable                                                {"lockUntil": "${FutureDate}", "userId": "${User_Id}", "tenantId": "${Tenant_Id}", "reasons": "${Reason}"}
@@ -365,22 +369,19 @@ Convert "Point" Request Body To Json
 RoleClaim Post Request
     ${RoleClaim_JsonBody}                                   API_Keywords.Convert "RoleClaim" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${RoleClaim_Create}           ${RoleClaim_JsonBody}             #${headers}
-    #${RoleClaim_responseBody}                               POST On Session                 ${API Session Alias}              ${RoleClaim_Create}           json=${RoleClaim_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${RoleClaim_Create}           ${RoleClaim_JsonBody}
     Set Global Variable                                     ${RoleClaim_ID}                 ${Post_responseBody.json()['id']}
 
 Role Post Request
     ${Role_JsonBody}                                        API_Keywords.Convert "Role" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Role_Create}           ${Role_JsonBody}             #${headers}
-    #${Role_responseBody}                                    POST On Session                 ${API Session Alias}              ${Role_Create}           json=${Role_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Role_Create}           ${Role_JsonBody}
     Set Global Variable                                     ${Role_ID}                 ${Post_responseBody.json()['id']}
 
 TypeOfPoint Post Request
     ${TypeOfPoint_JsonBody}                                        API_Keywords.Convert "TypeOfPoint" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${TypeOfPoint_Create}           ${TypeOfPoint_JsonBody}             #${headers}
-    #${TypeOfPoint_responseBody}                             POST On Session                     ${API Session Alias}              ${TypeOfPoint_Create}           json=${TypeOfPoint_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${TypeOfPoint_Create}           ${TypeOfPoint_JsonBody}
     Set Global Variable                                     ${TypeOfPoint_ID}                   ${Post_responseBody.json()['id']}
 
 
@@ -427,111 +428,77 @@ MQTTService_GetStationData_Accommodation Post Request
 VehicleQuery_GetByGlobalIds Post Request
     ${VehicleQuery_GetByGlobalIds_JsonBody}                                        API_Keywords.Convert "VehicleQuery_GetByGlobalIds" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${VehicleQuery_GetByGlobalIds}           ${VehicleQuery_GetByGlobalIds_JsonBody}             #${headers}
-    #${VehicleQuery_GetByGlobalIds_responseBody}                                    POST On Session                 ${API Session Alias}              ${VehicleQuery_GetByGlobalIds}           json=${VehicleQuery_GetByGlobalIds_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${VehicleQuery_GetByGlobalIds}           ${VehicleQuery_GetByGlobalIds_JsonBody}
 
 AccountTenant_LockOnTenant Post Request
     ${AccountTenant_LockOnTenant_JsonBody}                                        API_Keywords.Convert "AccountTenant_LockOnTenant" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Account_LockOnTenant}           ${AccountTenant_LockOnTenant_JsonBody}             #${headers}
-    #${AccountTenant_LockOnTenant_responseBody}                                    POST On Session                 ${API Session Alias}              ${Account_LockOnTenant}           json=${AccountTenant_LockOnTenant_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Account_LockOnTenant}           ${AccountTenant_LockOnTenant_JsonBody}
 
 AccountTenant_UnlockOnTenant Post Request
     ${AccountTenant_UnlockOnTenant_JsonBody}                                        API_Keywords.Convert "AccountTenant_LockOnTenant" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Account_UnlockOnTenant}           ${AccountTenant_UnlockOnTenant_JsonBody}             #${headers}
-    #${AccountTenant_UnlockOnTenant_responseBody}                                    POST On Session                 ${API Session Alias}              ${Account_UnlockOnTenant}           json=${AccountTenant_UnlockOnTenant_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Account_UnlockOnTenant}           ${AccountTenant_UnlockOnTenant_JsonBody}
 
 AccountTenant_LockOnTenantTemporary Post Request
     ${AccountTenant_LockOnTenantTemporary_JsonBody}                                        API_Keywords.Convert "AccountTenant_LockOnTenantTemporary" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Account_LockOnTenantTemporary}           ${AccountTenant_LockOnTenantTemporary_JsonBody}             #${headers}
-    #${AccountTenant_LockOnTenantTemporary_responseBody}                                    POST On Session                 ${API Session Alias}              ${Account_LockOnTenantTemporary}           json=${AccountTenant_LockOnTenantTemporary_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Account_LockOnTenantTemporary}           ${AccountTenant_LockOnTenantTemporary_JsonBody}
 
 AccountTenant_TenantLinkOnUser Post Request
     ${AccountTenant_TenantLinkOnUser_JsonBody}                                        API_Keywords.Convert "AccountTenant_TenantLinkOnUser" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Account_TenantLinkOnUser}           ${AccountTenant_TenantLinkOnUser_JsonBody}             #${headers}
-    #${AccountTenant_TenantLinkOnUser_responseBody}                                    POST On Session                 ${API Session Alias}              ${Account_TenantLinkOnUser}           json=${AccountTenant_TenantLinkOnUser_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Account_TenantLinkOnUser}           ${AccountTenant_TenantLinkOnUser_JsonBody}
 
 AccountTenant_UnregisterOnTenant Post Request
     ${AccountTenant_UnregisterOnTenant_JsonBody}                                        API_Keywords.Convert "AccountTenant_LockOnTenant" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Account_UnregisterOnTenant}           ${AccountTenant_UnregisterOnTenant_JsonBody}             #${headers}
-    #${AccountTenant_UnregisterOnTenant_responseBody}                                    POST On Session                 ${API Session Alias}              ${Account_UnregisterOnTenant}           json=${AccountTenant_UnregisterOnTenant_JsonBody}           headers=${headers}
-
+    Create Relative Post Session                            ${Account_UnregisterOnTenant}           ${AccountTenant_UnregisterOnTenant_JsonBody}
 
 Vehicle Post Request
     ${Vehicle_JsonBody}                                        API_Keywords.Convert "Vehicle" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Vehicle_Create}           ${Vehicle_JsonBody}             #${headers}
-    #${Vehicle_responseBody}                                    POST On Session                 ${API Session Alias}              ${Vehicle_Create}           json=${Vehicle_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Vehicle_Create}           ${Vehicle_JsonBody}
     Set Global Variable                                     ${Vehicle_ID}                 ${Post_responseBody.json()['id']}
 
 VehicleType Post Request
     ${VehicleType_JsonBody}                                        API_Keywords.Convert "VehicleType" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${VehicleType_Create}           ${VehicleType_JsonBody}             #${headers}
-    #${VehicleType_responseBody}                                    POST On Session                 ${API Session Alias}              ${VehicleType_Create}           json=${VehicleType_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${VehicleType_Create}           ${VehicleType_JsonBody}
     Set Global Variable                                     ${VehicleType_ID}                 ${Post_responseBody.json()['id']}
 
 Operator Post Request
     ${Operator_JsonBody}                                    API_Keywords. Convert "Operator" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Operator_Create}           ${Operator_JsonBody}             #${headers}
-    #${Operator_responseBody}                                POST On Session                 ${API Session Alias}              ${Operator_Create}           json=${Operator_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Operator_Create}           ${Operator_JsonBody}
     Set Global Variable                                     ${Operator_ID}                 ${Post_responseBody.json()['id']}
 
 VehicleModel Post Request
     ${VehicleModel_JsonBody}                                API_Keywords.Convert "VehicleModel" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${VehicleModel_Create}           ${VehicleModel_JsonBody}             #${headers}
-    #${VehicleModel_responseBody}                            POST On Session                 ${API Session Alias}              ${VehicleModel_Create}           json=${VehicleModel_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${VehicleModel_Create}           ${VehicleModel_JsonBody}
     Set Global Variable                                     ${VehicleModel_ID}                 ${Post_responseBody.json()['id']}
 
 RoleClaim_CreateForRightsCode Post Request
     ${RoleClaim_CreateForRightsCode_JsonBody}               API_Keywords.Convert "RoleClaim_CreateForRightCodes" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${RoleClaim_CreateForRightsCode}           ${RoleClaim_CreateForRightsCode_JsonBody}             #${headers}
-    #${RoleClaim_CreateForRightsCode_responseBody}           POST On Session                   ${API Session Alias}              ${RoleClaim_CreateForRightsCode}           json=${RoleClaim_CreateForRightsCode_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${RoleClaim_CreateForRightsCode}           ${RoleClaim_CreateForRightsCode_JsonBody}
     Set Global Variable                                     ${RoleClaimCreateForRightsCode_ID}                                    ${Post_responseBody.json()['id']}
 
 ContactDetails Post Request
     ${ContactDetails_JsonBody}                              API_Keywords.Convert "ContactDetails" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${ContactDetails_Create}           ${ContactDetails_JsonBody}             #${headers}
-    #${ContactDetails_responseBody}                          POST On Session                   ${API Session Alias}              ${ContactDetails_Create}           json=${ContactDetails_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${ContactDetails_Create}           ${ContactDetails_JsonBody}
     Set Global Variable                                     ${ContactDetails_ID}                                    ${Post_responseBody.json()['id']}
 
 Point Post Request
     ${Point_JsonBody}                                       API_Keywords.Convert "Point" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Point_Create}           ${Point_JsonBody}             #${headers}
-    #${Point_responseBody}                                   POST On Session                   ${API Session Alias}              ${Point_Create}           json=${Point_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Point_Create}           ${Point_JsonBody}
     Set Global Variable                                     ${Point_ID}                                    ${Post_responseBody.json()['id']}
-
-
-#Address Post Request
-#    ${Address_JsonBody}                                        API_Keywords.Convert "Address" Request Body To Json
-#    Request Header
-#    ${Address_responseBody}                                 POST On Session                 ${API Session Alias}              ${Address_Create}           json=${Address_JsonBody}           headers=${headers}
-#    Set Global Variable                                     ${Address_ID}                 ${Address_responseBody.json()['id']}
 
 Address Post Request
     ${Address_JsonBody}                                     API_Keywords.Convert "Address" Request Body To Json
     Request Header
-    Create Relative Post Session                            ${Address_Create}           ${Address_JsonBody}             #${headers}
-    #${Address_responseBody}                                 POST On Session                 ${API Session Alias}              ${Address_Create}           json=${Address_JsonBody}           headers=${headers}
+    Create Relative Post Session                            ${Address_Create}           ${Address_JsonBody}
     Set Global Variable                                     ${Address_ID}                 ${Post_responseBody.json()['id']}
-
-#Create Post Request Session For "CheckForSufficientClaims"
-    #Create Base Session
-    #${CheckForSufficientClaims_JsonBody}                      Convert "CheckForSufficientClaims" Reponse Body To Json
-    #Request Header
-    #Create Relative Post Session        /UserModulePermissions/CheckForSufficientClaims          json=${CSC_JsonBody}           headers=${headers}
-
-#Create Post Request Session For "VehicleMoveUpdate"
-#    Create Base Session
-#    ${VMU_JsonBody}                     Convert "VMU" Reponse Body To Json
-#    Request Header
-#    Create Relative Post Session        ${Vehicle_moveUpdate_url}          json=${VMU_JsonBody}         headers=${headers}

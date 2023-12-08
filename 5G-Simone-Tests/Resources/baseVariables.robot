@@ -90,5 +90,3 @@ ${Max_Response_Time}                        1.500
 ######## JSON ############
 ${CheckForSufficientClaims_requestBody}                 [{"itemId": 0, "moduleId": 6, "entityOrFunctionId": 5, "requieredRights": 32}]
 ${VehicleQuery_GetByGlobalIds_requestBody}              ["local-vehicle", "Biqx", "VT_1005", "TestZug3"]
-
-
