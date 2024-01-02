@@ -65,10 +65,10 @@ ${VehicleMoveUpdate_resBody}                 {"cameras": [{"url": "/VID_rechts.m
 ...     "carriage": {"currentPassengers": ${Current_Passangers},"currentWeight": 0}}
 
 ############ Search For SA Clients #############
-${client1}                                  Aleena
+${client1}                                  Simone
 ${client2}                                  pnich
 ${client3}                                  Martin
-${client4}                                  White
+${client4}                                  Scott
 ${client5}                                  Hayroyal
 
 ########### Search For Tenants ######################
