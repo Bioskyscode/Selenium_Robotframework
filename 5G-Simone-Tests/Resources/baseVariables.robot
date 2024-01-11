@@ -3,7 +3,7 @@ ${chrome}                                   chrome
 ${edge}                                     edge
 ${firefox}                                  firefox
 
-${TA_Password}                 HalliGalli2!
+${TA_Password}                              HalliGalli2!
 #${tenantAdmin_AzureURL}                          http://20.52.117.91:3000/welcome
 ${tenantAdmin_URL_productionStage}          https://5gsimone.staging.biqx.de                              #http://82.165.231.18:3000/welcome
 ${tenantAdmin_URL_testingStage}             https://5gsimone-test.staging.biqx.de                         #http://82.165.231.18:3001/welcome

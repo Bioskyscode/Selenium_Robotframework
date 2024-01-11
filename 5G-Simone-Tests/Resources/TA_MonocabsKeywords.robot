@@ -20,12 +20,12 @@ Table Header Validation
 Verify Monocabs Table
     Table Header Validation
     TA_VehicleMoveUpdateKeywords.Start Vehicle Move Update
-    Toggle Between QoS and Monocabs Page
+    Toggle Between Infotainment and Monocabs Page
     Monocabs Table Should Not Be Empty
     Check If Monocabs Table Contains Vehicle
 
-Toggle Between QoS and Monocabs Page
-    Click Element                                   ${btn_Qos}
+Toggle Between Infotainment and Monocabs Page
+    Click Element                                   ${li_infotainment}
     Click Element                                   ${btn_Monocabs}
 
 Monocabs Table Should Not Be Empty

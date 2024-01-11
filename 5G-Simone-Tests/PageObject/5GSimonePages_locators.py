@@ -151,7 +151,7 @@ btn_Qos = '//a[@id="qos-link"]'
 
 ########## API Base Url ############################################
 api_base_url_testingStage = 'https://5gsimone-test.staging.biqx.de:6100'
-api_base_url_productionStage = 'https://5gsimone.staging.biqx.de:5100'
+api_base_url_productionStage = 'https://5gsimone.staging.biqx.de:6100'
 
 ########## API Relative Url ############################################
 TA_login_url = '/Account/Login'
