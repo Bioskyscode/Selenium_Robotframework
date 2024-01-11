@@ -8,7 +8,7 @@ Start Web Test
     #Selenium Speed
     ${options}                          Evaluate                sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
     Call Method                         ${options}              add_argument            test-type
-    #Call Method                         ${options}              add_argument            --headless
+    Call Method                         ${options}              add_argument            --headless
     Call Method                         ${options}              add_argument            --disable-extensions
     #Call Method                        ${options}              add_argument            -- disable-infobars
     Call Method                         ${options}              add_argument            --disable-gpu
