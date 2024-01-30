@@ -47,6 +47,7 @@ Navigate To 5G Simone Tenant Admin URL
     Wait Until Page Contains                                Willkommen bei 5G-Simone
     Wait Until Page Contains Element                        ${img_WelcomePage}
     Wait Until Page Contains                                Anmelden
+    Wait Until Page Contains Element                        ${btn_WelcomePageLogin}
     Click Element                                           ${btn_WelcomePageLogin}
 
 

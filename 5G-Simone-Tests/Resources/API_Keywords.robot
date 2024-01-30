@@ -318,7 +318,7 @@ Convert "VehicleType" Request Body To Json
 Convert "Vehicle" Request Body To Json
     ${Vehicle_name}                                         FakerLibrary.Color Name
     ${ShortName}                                            FakerLibrary.Company Suffix
-    ${Name}                                          FakerLibrary.First Name
+    ${Name}                                                 FakerLibrary.First Name
     ${Vehicle_requestBody}                                  Set Variable                                                {"golbalId": "${Vehicle_name}_${Name}", "name": "${Name}", "shortName": "${ShortName}", "vehicleModelId": "d357418c-4afe-4d1d-b8ce-018ad2c5be27", "vehicleTypeId": "700f6e9d-3f1c-497d-b80f-0290c824473b"}
     ${json_Vehicle}                                         Evaluate                                                    json.loads($Vehicle_requestBody)
     [Return]                                                ${json_Vehicle}

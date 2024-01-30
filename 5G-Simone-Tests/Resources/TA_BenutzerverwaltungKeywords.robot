@@ -122,8 +122,8 @@ Validate A Mail Cannot Be Registered Twice
 Toast_alert Validation
     #Pause Execution
     Wait Until Element Is Visible                       ${toast_alert}
-    ${Top_toast_text}                                   Get Text                                    ${txt_toast_alert_1}
-    ${Bottom_toast_text}                                Get Text                                    ${txt_toast_alert_2}
+    ${Top_toast_text}                                   Get Text                                        ${txt_toast_alert_1}
+    ${Bottom_toast_text}                                Get Text                                        ${txt_toast_alert_2}
     Should Be Equal                                     ${Top_toast_text}                               Ausführung erfolgreich
     Should Be Equal                                     ${Bottom_toast_text}                            Der Benutzer wurde erfolgreich angelegt.
 

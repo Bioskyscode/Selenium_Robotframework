@@ -1,6 +1,6 @@
                     #Welcome Page
 txt_WelcomePageText = '//*[@id="root"]/div/div/div[4]/div/div/div[1]'
-btn_WelcomePageLogin = '//*[@id="root"]/div/div/div[4]/div/div/div[4]/button'
+btn_WelcomePageLogin = '//a[@id="login-link"]'
 img_WelcomePage = 'xpath://*[@id="root"]/div/div/div[4]/div/div/div[2]/img'
 
 # Super-Admin Login Page
@@ -148,6 +148,21 @@ Hannover_station = '//*[@id="root"]/div/div/div[4]/div/div/div[1]/div[1]/div[4]/
 
             # QoS
 btn_Qos = '//a[@id="qos-link"]'
+btn_Qos_Infotainment = '//a[@id="qos-infotainment-link"]'
+btb_FzgMeldung = '//a[@id="qos-signalr-link"]'
+btn_Datenaktualität = '//button[normalize-space()="Datenaktualität"]'
+btn_Entfernungsverteilung = '//button[normalize-space()="Entfernungsverteilung"]'
+table_brokerResponse = '//div[@class="rechts"]//div//table'
+table_brokerResponse_row1 = '//tbody/tr[1]'
+table_brokerResponse_row2 = '//tbody/tr[2]'
+table_brokerResponse_row3 = '//tbody/tr[3]'
+telekomData_row = '//tbody/tr[3]/td[3]'
+backendData_row = '//tbody/tr[2]/td[3]'
+container_Datenaktualität = '//div[@id="dlgActuality"]'
+btn_Pause = '//button[normalize-space()="Pause"]'
+container_Datenaktualität_topics = '//body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/*[name()="svg"]/*[name()="g"]/*[name()="g"]'
+btn_Geschwindigkeitsanalyse = '//button[normalize-space()="Geschwindigkeitsanalyse"]'
+btn_Geschwindigkeitsanalyse_pause = ''
 
 ########## API Base Url ############################################
 api_base_url_testingStage = 'https://5gsimone-test.staging.biqx.de:6100'
@@ -251,7 +266,7 @@ li_Kultur = '//*[@id="tabs"]/ul/li[8]'
 li_annehmlichkeit = '//*[@id="tabs"]/ul/li[9]'
 li_leihräder = '//*[@id="tabs"]/ul/li[10]'
 topic_wetter = '//div[@title="Wetter"]'
-topic_abfahrt = '//div[@title="Abfahrt"]'
+topic_abfahrt = '//div[@id="infotainemt-checkbox-Abfahrt"]'
 topic_gesundheit = '//div[@title="Gesundheit"]'
 topic_shopping = '//div[@title="Shopping"]'
 topic_unterkunft = '//div[@title="Unterkunft"]'
@@ -275,3 +290,4 @@ Gastronomie_table = '//div[@id="tabs_content_5"]'
 Sehenswürdigkeiten_table = '//div[@id="tabs_content_6"]'
 Kultur_table = '//div[@id="tabs_content_7"]'
 Annehmlichkeit_table = '//div[@id="tabs_content_8"]'
+table_InfotainmentTopic_row = '//table[@role="table"]/tbody/tr'
