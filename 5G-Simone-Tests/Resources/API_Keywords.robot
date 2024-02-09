@@ -30,8 +30,8 @@ Create Relative Get Session
 
 Create Relative Post Session
     [Arguments]                         ${post_relative_uri}         ${JsonBody}
-    ${response_body1}                    POST On Session                     ${API Session Alias}                            ${post_relative_uri}                     json=${JsonBody}                headers=${headers}
-    Set Global Variable                 ${Post_response_body}                         ${response_body1}
+    ${response_body1}                    POST On Session                                ${API Session Alias}                            ${post_relative_uri}                     json=${JsonBody}                headers=${headers}
+    Set Global Variable                 ${Post_response_body}                           ${response_body1}
 ##################### Logins ###############################
 Tenant Admin Login
     [Tags]      API
@@ -316,10 +316,12 @@ Convert "VehicleType" Request Body To Json
     [Return]                                                ${json_VehicleType}
 
 Convert "Vehicle" Request Body To Json
+    VehicleType Post Request
+    VehicleModel Post Request
     ${Vehicle_name}                                         FakerLibrary.Color Name
     ${ShortName}                                            FakerLibrary.Company Suffix
     ${Name}                                                 FakerLibrary.First Name
-    ${Vehicle_requestBody}                                  Set Variable                                                {"golbalId": "${Vehicle_name}_${Name}", "name": "${Name}", "shortName": "${ShortName}", "vehicleModelId": "d357418c-4afe-4d1d-b8ce-018ad2c5be27", "vehicleTypeId": "700f6e9d-3f1c-497d-b80f-0290c824473b"}
+    ${Vehicle_requestBody}                                  Set Variable                                                {"golbalId": "${Vehicle_name}_${Name}", "name": "${Name}", "shortName": "${ShortName}", "vehicleModelId": "${VehicleModel_ID}", "vehicleTypeId": "${VehicleType_ID}"}
     ${json_Vehicle}                                         Evaluate                                                    json.loads($Vehicle_requestBody)
     [Return]                                                ${json_Vehicle}
 

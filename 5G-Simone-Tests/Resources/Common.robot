@@ -1,6 +1,6 @@
 *** Settings ***
 Library             SeleniumLibrary
-#Library             DateTime
+Library             Process
 Resource            ../Resources/baseVariables.robot
 
 *** Keywords ***

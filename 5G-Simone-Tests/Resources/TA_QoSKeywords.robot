@@ -1,17 +1,14 @@
 *** Settings ***
 Library                         SeleniumLibrary         timeout=00:00:30
+Library    Process
+Library    OperatingSystem
 Variables                       ../PageObject/5GSimonePages_locators.py
 Resource                       ../Resources/TA_InfotainmentKeywords.robot
-#Resource    Common.robot
-#Library         Collections
-#Library    OperatingSystem
+Resource                       ../Resources/Common.robot
 
-*** Variables ***
-#&{Stations}         station1=${Minden_HBF}          station2=${Lemgo_BHF}       station3=${Bielefeld_HBF}       station4=${Bösingfeld_HBF}       station5=${BÜ_Bruchstr_HBF}       station6=${Brückenweg_HBF}
 
 *** Keywords ***
 Navigate To "QoS-Infotainment" Page
-    #Selenium Speed
     Wait Until Page Contains Element                    ${btn_Qos}
     Mouse Over                                          ${btn_Qos}
     Click Element                                       ${btn_Qos}
@@ -59,9 +56,9 @@ Select a Random Station
     Select Station
     Wait Until Page Contains Element                    ${random_station}
     Click Element                                       ${random_station}
-    ${BHF}     Get Text    ${random_station}
-    Set Global Variable    ${GlobalVar_BHF}               ${BHF}
-    Wait Until Page Contains    ${BHF}
+    ${BHF}                                              SeleniumLibrary.Get Text                        ${random_station}
+    Set Global Variable                                 ${GlobalVar_BHF}                ${BHF}
+    Wait Until Page Contains                            ${BHF}
 
 Go To "Datenaktualität" Popup-Page
     Wait Until Page Contains Element                    ${btn_Datenaktualität}
@@ -80,16 +77,6 @@ Validate Datenaktualität Popup-Page Contents
 Validate "Topics" Are Displayed on Datenaktualität Page
     Page Should Contain Element                         ${container_Datenaktualität_topics}
     Should Not Be Empty                                 ${container_Datenaktualität_topics}
-    #${Total_Topic1}                                     Get Element Count                       ${container_Datenaktualität_topics}
-    #Sleep    100
-    #${Total_Topic2}                                     Get Element Count                       ${container_Datenaktualität_topics}
-    #Sleep    30
-    #${Total_Topic3}                                     Get Element Count                       ${container_Datenaktualität_topics}
-    #${total}                                            Create Dictionary                       topic1=${Total_Topic1}                  topic2=${Total_Topic2}       #topic3=${Total_Topic3}
-    #${random_topic_Key}                                 Evaluate                                random.choice(list($total.keys()))
-    #${random_total}                                     Get From Dictionary                     ${total}                                ${random_topic_Key}
-    #${isTopicMoreThan1}                                 Evaluate                                ${random_total}>0
-    #Should Be True                                      ${isTopicMoreThan1}
 
 Go To "Entfernungsverteilung" Page
     Wait Until Page Contains Element                    ${btn_Entfernungsverteilung}
@@ -103,6 +90,104 @@ Validate "Entfernungsverteilung" Page Contents
     Page Should Contain                                 Minimum
     Page Should Contain                                 Mittelwert
     Page Should Contain                                 Maximum
+
+Navigate To "Fzg-Meldungen"
+    Wait Until Page Contains Element                    ${btn_Qos}
+    Mouse Over                                          ${btn_Qos}
+    Click Element                                       ${btn_Qos}
+    Wait Until Page Contains Element                    ${btb_FzgMeldung}
+    Mouse Over                                          ${btb_FzgMeldung}
+    Click Element                                       ${btb_FzgMeldung}
+    Wait Until Page Contains                            Geschwindigkeitsanalyse
+    Page Should Contain Button                          ${btn_Geschwindigkeitsanalyse}
+    Page Should Contain                                 Datenverbindung
+    Page Should Contain                                 Fahrzeugsendestatus
+    Page Should Contain                                 Anzahl
+    Page Should Contain                                 Fahrzeugmeldungen
+    Page Should Contain                                 Letztes sendendes Fahrzeug
+    
+Validate "Fahrzeuge Bewegungsdaten"
+    ${update}       Process.Start Process           C:/Users/AbiodunAjibade/PycharmProjects/5G-Simone-Frontend/5G-Simone-Tests/PageObject/vehicle_mover.py         status-window      shell=True      cwd=${OUTPUT_DIR}
+    Wait Until Page Contains Element                    ${btn_Geschwindigkeitsanalyse}
+    Mouse Over                                          ${btn_Geschwindigkeitsanalyse}
+    Click Element                                       ${btn_Geschwindigkeitsanalyse}
+    Wait Until Page Contains Element                    ${container_fahrzeugeBewegungsdaten}
+    Page Should Contain                                 Fahrzeuge Bewegungsdaten
+    Page Should Contain Button                          ${btn_Geschwindigkeitsanalyse_pause}
+    Page Should Contain                                 Max. Geschw.
+    Page Should Contain                                 Max. Beschl.
+    Page Should Contain                                 Geschwindigkeiten...
+    Page Should Contain                                 Datengenerierung
+    Page Should Contain                                 Beschleunigungen...
+    Page Should Contain                                 Datengenerierung
+    Page Should Contain                                 Fahrzeug
+    Page Should Contain                                 Fehler
+    Page Should Contain                                 Eingang
+    Page Should Contain                                 Bus 2
+    Page Should Contain                                 Bus 11
+    Fahrzeug
+    Fehler
+    Eingang
+    Wait Until Page Contains Element                    ${btn_Geschwindigkeitsanalyse_pause}
+    Click Element                                       ${btn_Geschwindigkeitsanalyse_pause}
+    Sleep    3
+    Click Element                                       ${btn_Geschwindigkeitsanalyse_pause}
+
+Fahrzeug
+    Click Element                                       ${btn_fahrzeug_filter}
+    Wait Until Page Contains Element                    ${fahrzeug_filter}
+    Click Element                                       ${fahrzeug_filter_matchAll}
+    Page Should Contain                                 Match All
+    Page Should Contain                                 Match Any
+    Click Element                                       ${li_fahrzeug_filter_matchAny}
+    Click Element                                       ${fahrzeug_filter_startsWith}
+    Page Should Contain                                 Starts with
+    Page Should Contain                                 Contains
+    Page Should Contain                                 Not contains
+    Page Should Contain                                 Ends with
+    Click Element                                       ${li_fahrzeug_filter_contain}
+    Click Element                                       ${fahrzeug_filter_AddRule}
+    Page Should Contain                                 Remove Rule
+    Click Element                                       ${fahrzeug_filter_RemoveRule}
+    Click Element                                       ${fahrzeug_filter_clear}
+
+
+Fehler
+     Click Element                                      ${btn_fehler_filter}
+    Wait Until Page Contains Element                    ${fahrzeug_filter}
+    Click Element                                       ${fahrzeug_filter_matchAll}
+    Page Should Contain                                 Match All
+    Page Should Contain                                 Match Any
+    Click Element                                       ${li_fahrzeug_filter_matchAny}
+    Click Element                                       ${fehler_filter_klasse}
+    Page Should Contain                                 Ohne Zeit
+    Page Should Contain                                 Eingang alt
+    Page Should Contain                                 Ohne Koord.
+    Page Should Contain                                 Ang. Geschw.
+    Click Element                                       ${li_fehler_filter_eingangAlt}
+    Click Element                                       ${btn_fehler_filter_Klasse_close}
+    Click Element                                       ${fahrzeug_filter_AddRule}
+    Page Should Contain                                 Remove Rule
+    Click Element                                       ${fehler_filter_RemoveRule}
+    Click Element                                       ${fahrzeug_filter_clear}
+
+Eingang
+    Click Element                                       ${btn_eingang_filter}
+    Wait Until Page Contains Element                    ${fahrzeug_filter}
+    Click Element                                       ${fahrzeug_filter_matchAll}
+    Page Should Contain                                 Match All
+    Page Should Contain                                 Match Any
+    Click Element                                       ${li_fahrzeug_filter_matchAny}
+    Click Element                                       ${fahrzeug_filter_startsWith}
+    Page Should Contain                                 Starts with
+    Page Should Contain                                 Contains
+    Page Should Contain                                 Not contains
+    Page Should Contain                                 Ends with
+    Click Element                                       ${li_fahrzeug_filter_contain}
+    Click Element                                       ${fahrzeug_filter_AddRule}
+    Page Should Contain                                 Remove Rule
+    Click Element                                       ${fahrzeug_filter_RemoveRule}
+    Click Element                                       ${fahrzeug_filter_clear}
 
 
 

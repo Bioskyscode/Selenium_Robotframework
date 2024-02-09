@@ -3,7 +3,6 @@ Library                         SeleniumLibrary         timeout=00:00:30
 Library                         FakerLibrary
 Library    Collections
 Variables                       ../PageObject/5GSimonePages_locators.py
-#Resource                        Common.robot
 
 *** Keywords ***
 Navigate To Infotainment Page

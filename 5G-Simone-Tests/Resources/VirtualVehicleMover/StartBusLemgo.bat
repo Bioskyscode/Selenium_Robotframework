@@ -1,0 +1,1 @@
+C:/Users/AbiodunAjibade/PycharmProjects/5G-Simone-Frontend/5G-Simone-Tests/Resources/VirtualVehicleMover/AutomaticMover.exe a/ s/"C:/Users/AbiodunAjibade/PycharmProjects/5G-Simone-Frontend/5G-Simone-Tests/Resources/VirtualVehicleMover/TestData" d/"https://5gsimone-test.staging.biqx.de:6100" m/100 c/50

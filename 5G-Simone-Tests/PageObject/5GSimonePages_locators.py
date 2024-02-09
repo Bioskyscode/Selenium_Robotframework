@@ -1,6 +1,8 @@
                     #Welcome Page
 txt_WelcomePageText = '//*[@id="root"]/div/div/div[4]/div/div/div[1]'
 btn_WelcomePageLogin = '//a[@id="login-link"]'
+#//a[@id="login-link"]
+#//button[normalize-space()="Anmelden"]
 img_WelcomePage = 'xpath://*[@id="root"]/div/div/div[4]/div/div/div[2]/img'
 
 # Super-Admin Login Page
@@ -162,7 +164,25 @@ container_Datenaktualität = '//div[@id="dlgActuality"]'
 btn_Pause = '//button[normalize-space()="Pause"]'
 container_Datenaktualität_topics = '//body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/*[name()="svg"]/*[name()="g"]/*[name()="g"]'
 btn_Geschwindigkeitsanalyse = '//button[normalize-space()="Geschwindigkeitsanalyse"]'
-btn_Geschwindigkeitsanalyse_pause = ''
+btn_Geschwindigkeitsanalyse_pause = '//button[normalize-space()="Pause"]'
+container_fahrzeugeBewegungsdaten ='//div[@id="dlgActuality"]'
+btn_fahrzeug_filter = '//th[@class="p-sortable-column p-highlight"]//div[@class="p-column-filter p-fluid p-column-filter-menu"]'
+fahrzeug_filter = '//div[@class="p-column-filter-overlay p-component p-fluid p-column-filter-overlay-menu p-ripple-disabled p-connected-overlay-enter-done"]'
+fahrzeug_filter_matchAll = '//div[@class="p-dropdown p-component p-inputwrapper p-inputwrapper-filled p-column-filter-operator-dropdown"]'
+li_fahrzeug_filter_matchAny = '//li[@aria-label="Match Any"]'
+li_fahrzeug_filter_contain = '//li[@aria-label="Contains"]'
+fahrzeug_filter_startsWith = '//div[@class="p-dropdown p-component p-inputwrapper p-inputwrapper-filled p-column-filter-matchmode-dropdown"]'
+fahrzeug_filter_AddRule = '//button[@aria-label="Add Rule"]'
+fahrzeug_filter_RemoveRule = '//body[1]/div[3]/div[2]/div[2]/div[2]/button[1]'
+fahrzeug_filter_clear = '//button[@aria-label="Clear"]'
+
+btn_fehler_filter = '//*[@id="tblVehicleErrors"]/div[1]/table/thead/tr/th[2]/div/div/button'
+li_fehler_filter_eingangAlt = '(//li[@role="option"])[2]'
+fehler_filter_klasse = '//div[@class="p-multiselect p-component p-inputwrapper p-column-filter"]'
+btn_fehler_filter_Klasse_close = '//button[@class="p-multiselect-close p-link"]'
+fehler_filter_RemoveRule = '//body[1]/div[3]/div[2]/div[2]/div[3]/button[1]'
+
+btn_eingang_filter = '//*[@id="tblVehicleErrors"]/div[1]/table/thead/tr/th[3]/div/div/button'
 
 ########## API Base Url ############################################
 api_base_url_testingStage = 'https://5gsimone-test.staging.biqx.de:6100'
