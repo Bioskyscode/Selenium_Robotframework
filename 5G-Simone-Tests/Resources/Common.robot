@@ -17,7 +17,7 @@ Start Web Test
     [Return]                            ${options}
 
     Log To Console                      Start 5G Simone App on Web Browser
-    Open Browser                        about:blank             ${chrome}               options=${options}
+    Open Browser                        about:blank             ${chrome}               #options=${options}
     Clear Cookies
     Set Window Position                 -7                      -20
     Set Window Size                     1920                    1080

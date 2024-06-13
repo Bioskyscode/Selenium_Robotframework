@@ -107,7 +107,7 @@ Navigate To "Fzg-Meldungen"
     Page Should Contain                                 Letztes sendendes Fahrzeug
     
 Validate "Fahrzeuge Bewegungsdaten"
-    ${update}       Process.Start Process           C:/Users/AbiodunAjibade/PycharmProjects/5G-Simone-Frontend/5G-Simone-Tests/PageObject/vehicle_mover.py         status-window      shell=True      cwd=${OUTPUT_DIR}
+    ${update}       Process.Start Process           .../5G-Simone-Frontend/5G-Simone-Tests/PageObject/vehicle_mover.py         status-window      shell=True      cwd=${OUTPUT_DIR}
     Wait Until Page Contains Element                    ${btn_Geschwindigkeitsanalyse}
     Mouse Over                                          ${btn_Geschwindigkeitsanalyse}
     Click Element                                       ${btn_Geschwindigkeitsanalyse}

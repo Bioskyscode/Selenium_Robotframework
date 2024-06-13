@@ -1,11 +1,24 @@
-# Command to be executed
+#!/usr/bin/env python
+
 import subprocess
 from time import sleep
 
-filedir = open('C:/Users/AbiodunAjibade/PycharmProjects/5G-Simone-Frontend/log/log.html')
-cmd = ['C:/Users/AbiodunAjibade/PycharmProjects/5G-Simone-Frontend/5G-Simone-Tests/Resources/VirtualVehicleMover/StartBusLemgo.bat']
-proc = subprocess.Popen(cmd)
+proc = subprocess.Popen(
+    [
+        "docker",
+        "run",
+        "--rm",
+        "-ti",
+        "registry.biqx.de/biqx_dev/vehiclemover",
+        "s/TestData",
+        'd/"https://5gsimone-test.staging.biqx.de:6100"',
+        "m/100",
+        "c/50",
+        "l/r",
+    ]
+)
 print(proc.pid)
 sleep(30)
 proc.terminate()
-print('process completed')
+print("process completed")
+
